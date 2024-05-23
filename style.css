@@ -1,0 +1,14 @@
+/*
+ Theme Name:   Motaphoto-child
+ Theme URI:    http://localhost/motaphoto-child
+ Description:  Thème enfant pour le site Motaphoto
+ Author:       Ouafa Bounyar
+ Author URI:   http://localhost/motaphoto
+ Template:     twentytwentythree
+ Version:      1.0.0
+*/
+
+/* Importer les styles du thème parent */
+@import url("../twentytwentythree/style.css");
+
+/* Ajoutez ici vos styles personnalisés */
