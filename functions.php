@@ -1,6 +1,6 @@
 <?php
 function motaphoto_child_enqueue_styles() {
-    $parent_style = 'twentytwentythree-style'; // Ceci est le handle du style parent
+    $parent_style = 'twentytwentyone-style'; // Ceci est le handle du style parent
 
     wp_enqueue_style($parent_style, get_template_directory_uri() . '/style.css');
     wp_enqueue_style('motaphoto-child-style',
@@ -11,3 +11,8 @@ function motaphoto_child_enqueue_styles() {
 }
 add_action('wp_enqueue_scripts', 'motaphoto_child_enqueue_styles');
 ?>
+<?php
+function motaphoto_enqueue_scripts() {
+    wp_enqueue_script('motaphoto-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'motaphoto_enqueue_scripts');

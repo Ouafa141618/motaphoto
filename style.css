@@ -4,11 +4,106 @@
  Description:  Thème enfant pour le site Motaphoto
  Author:       Ouafa Bounyar
  Author URI:   http://localhost/motaphoto
- Template:     twentytwentythree
+ Template:     twentytwentyone
  Version:      1.0.0
 */
 
 /* Importer les styles du thème parent */
-@import url("../twentytwentythree/style.css");
+@import url("../twentytwentyone/style.css");
 
 /* Ajoutez ici vos styles personnalisés */
+/* The Modal (background) */
+.modal {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0,0.4);
+          padding-top: 60px;
+      }
+      
+      /* Modal Content */
+      .modal-content {
+          background-color: #fefefe;
+          margin: 5% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+      }
+      
+      /* The Close Button */
+      .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+      }
+
+      /*formulaire de contact */
+      .header-image {
+          width: 100%;
+          text-align: center;
+          margin-bottom: 20px;
+      }
+      
+      .header-image img {
+          max-width: 100%;
+          height: auto;
+      }
+      
+      .contact-form-wrap {
+          width: 100%;
+          text-align: center;
+          margin: 20px auto;
+      }
+      
+      .contact-form-container {
+          display: flex;
+          justify-content: space-between;
+          gap: 10px; /* Espace entre les colonnes */
+      }
+      
+      .select-filter {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin: 10px;
+      }
+      
+      .option-filter {
+          width: 100%;
+          padding: 5px;
+      }
+      
+      .flexcolumn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+      
+      .flexrow {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+      }
+      
+      label p {
+          margin: 0;
+      }
+      
+      .dashicons {
+          cursor: pointer;
+      }
+      
