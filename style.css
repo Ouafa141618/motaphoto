@@ -1,5 +1,5 @@
 /*
- Theme Name:   Motaphoto-child
+ Theme Name:   Motaphoto Child
  Theme URI:    http://localhost/motaphoto-child
  Description:  Thème enfant pour le site Motaphoto
  Author:       Ouafa Bounyar
@@ -11,99 +11,182 @@
 /* Importer les styles du thème parent */
 @import url("../twentytwentyone/style.css");
 
-/* Ajoutez ici vos styles personnalisés */
-/* The Modal (background) */
-.modal {
-          display: none;
-          position: fixed;
-          z-index: 1;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          overflow: auto;
-          background-color: rgb(0,0,0);
-          background-color: rgba(0,0,0,0.4);
-          padding-top: 60px;
-      }
-      
-      /* Modal Content */
-      .modal-content {
-          background-color: #fefefe;
-          margin: 5% auto;
-          padding: 20px;
-          border: 1px solid #888;
-          width: 80%;
-      }
-      
-      /* The Close Button */
-      .close {
-          color: #aaa;
-          float: right;
-          font-size: 28px;
-          font-weight: bold;
-      }
-      
-      .close:hover,
-      .close:focus {
-          color: black;
-          text-decoration: none;
-          cursor: pointer;
-      }
+/*HEADER*/
 
-      /*formulaire de contact */
-      .header-image {
-          width: 100%;
-          text-align: center;
-          margin-bottom: 20px;
-      }
-      
-      .header-image img {
-          max-width: 100%;
-          height: auto;
-      }
-      
-      .contact-form-wrap {
-          width: 100%;
-          text-align: center;
-          margin: 20px auto;
-      }
-      
-      .contact-form-container {
-          display: flex;
-          justify-content: space-between;
-          gap: 10px; /* Espace entre les colonnes */
-      }
-      
-      .select-filter {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin: 10px;
-      }
-      
-      .option-filter {
-          width: 100%;
-          padding: 5px;
-      }
-      
-      .flexcolumn {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-      }
-      
-      .flexrow {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-      }
-      
-      label p {
-          margin: 0;
-      }
-      
-      .dashicons {
-          cursor: pointer;
-      }
-      
+header {
+    position: sticky;
+    top:0;
+    height: 80px;
+    width: 100vw;
+    -webkit-box-shadow: 0px 11px 12px -7px rgba(126, 126, 126, 0.226); 
+    box-shadow: 0px 11px 12px -7px rgba(126, 126, 126, 0.226);    
+}
+
+.container-header {
+    position: relative; 
+    display: flex;
+    width: 100vw; 
+    height: 100%;
+    max-width: 1200px;   
+    justify-content: space-between;
+    align-items: center; 
+    z-index: 30;
+}
+
+.container-header img {
+    width: 220px;
+    height: auto;
+    margin: 40px;
+}
+
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 74px;
+    
+}
+#menu-menu-header a{
+    font-size: 16px;
+    color: black;
+    text-transform: uppercase;
+}
+header a:hover {
+    font-weight:bold;
+    color:#121A48;
+}
+
+header,
+footer {
+    display: flex;
+    background-color: #ffffff;
+    text-align: center;
+    align-items: center;  
+    justify-content: center;
+    margin: auto;
+    z-index: 100;
+}
+#nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+#nav .menu-header-menu-container,
+#nav #modal__burger {
+    margin-right: 40px;    
+}
+/*FOOTER*/
+
+#menu-menu-footer {
+
+    display:flex;
+    gap:60px;
+}
+.footer {
+    display:flex;
+    gap: 74px;
+    justify-content: center;
+    border-top: 1px solid black;
+    padding-top:10px;
+    width: 1440px;
+    height: 80px;
+}
+
+.footer-nav a {
+    color:black;
+}
+
+.footer .widget {
+    padding: 0 40px;
+}
+
+.footer-nav {
+    display:flex;
+}
+/*------------------------------------------------------- MODALE CONTACT----------------------------------------------------------------------*/
+
+/* The Modal (background) */
+
+
+.modal {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);/* Black w/ opacity */
+}
+
+/*Le contenu de la Modale */
+.modal-content {
+    position:relative;
+    width: 80%;
+    background-color: #fefefe;
+    margin: auto;  
+    padding:15px 0;  
+    border: 5px solid black;
+    max-width: 600px;
+}
+
+.popup-informations {    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding: 5px 0 70px;
+    max-width: 265px;
+    margin: auto;
+}
+
+
+
+.wpcf7-form p input {
+    height: 40px;
+    padding: 10px;
+}
+
+
+.wpcf7-form p .wpcf7-submit {     
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.wpcf7-form-control {
+    border-radius: 8px;
+    color:black;
+}
+.wpcf7-submit .has-spinner {
+    width:260px;
+    height:50px;
+}
+label {
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.titre-contact {
+    background-image: url(./images/Contact-header.png) ;
+    background-repeat:repeat ;
+    width: 100%;
+    height:49px;
+    overflow:hidden;
+    margin-bottom: 10px;
+
+}

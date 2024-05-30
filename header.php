@@ -1,42 +1,68 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
+
 <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- FONT SPACE MONO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+
+    <!--FONT POPPINS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- ICONES FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/e6187c85ca.js" crossorigin="anonymous"></script>
+
+    <title>Mota</title>
+
+
+
     <?php wp_head(); ?>
 </head>
+
+
+
 <body <?php body_class(); ?>>
-    <header id="masthead" class="site-header">
-        <div class="site-branding">
-            <?php the_custom_logo(); ?>
-            <?php if ( is_front_page() && is_home() ) : ?>
-                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-            <?php else : ?>
-                <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-            <?php endif; ?>
-            <p class="site-description"><?php bloginfo( 'description' ); ?></p>
-        </div><!-- .site-branding -->
+    <?php wp_body_open(); ?>
+    <header>
+        <div class="container-header">
+            <a href="<?php echo home_url('/'); ?>" aria-label="Page d'accueil de Nathalie Mota">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo.png" alt="Logo <?php echo bloginfo('name'); ?>">
+            </a>
 
-        <nav id="site-navigation" class="main-navigation">
-            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'motaphoto-child' ); ?></button>
-            <?php
-            wp_nav_menu(
-                array(
-                    'theme_location' => 'primary',
-                    'menu_id'        => 'primary-menu',
-                )
-            );
-            ?>
-        </nav><!-- #site-navigation -->
 
-        <div class="header-image">
-            <?php if ( get_header_image() ) : ?>
-                <img src="<?php header_image(); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
-            <?php endif; ?>
-        </div><!-- .header-image -->
+            <nav role="navigation" aria-label="<?php _e('Menu principal', 'text-domain'); ?>" id="nav" class="active open">
 
-        <div class="contact-form-wrap">
-            <?php echo do_shortcode('[contact-form-7 id="9b1b367" title="Formulaire de contact 1"]'); ?>
+                <!-- Affiche le "Menu princiapal" enregistré au préalable et délcaré dans functions.php -->
+                <?php
+                wp_nav_menu([
+                    'theme_location' => 'main-menu',
+                    'container' => 'false', //On retire le conteneur généré par WP
+
+                ]);
+
+                ?>
+                
+
+                <div id="modal__content" class="modal__content">
+                    <?php
+                    wp_nav_menu([
+                        'theme_location' => 'main-menu',
+                        'container' => 'false',
+                    ]);
+                    ?>
+                </div>
+
+
+
+            </nav>
+
+
         </div>
-    </header><!-- #masthead -->
+        <?php include_once 'template-parts/contact.php'; ?>
+    </header>
