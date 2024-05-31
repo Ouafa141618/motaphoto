@@ -28,14 +28,6 @@ function register_motaphoto_menus() {
 add_action('init', 'register_motaphoto_menus');
 
 
-
-
-// Ajoute la prise en charge des images mises en avant
-add_theme_support('post-thumbnails');
-
-// Ajoute automatiquement le titre du site dans l'en-tête du site
-add_theme_support('title-tag');
-
 // Ajout du menu dans le thème WordPress
 function register_my_menus()
 {
