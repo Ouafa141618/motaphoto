@@ -1,13 +1,11 @@
 
 /*
-Theme Name: Montheme-mota
-Theme URI: http://localhost/mota/
-Author: Jennakry
+Theme Name: motaphoto
+Theme URI: http://localhost/motaphoto/
+Author: Ouafa BOUNYAR
 Author URI: https://openclassrooms.com
 Description: Thème pour le cours "Photographe freelance Projet 11"
 Version: 1.0
-Tags: openclassrooms, cookinfamily, cours
-Text Domain: montheme-mota
 */
 
 * {box-sizing: border-box;
@@ -15,7 +13,7 @@ Text Domain: montheme-mota
     padding: 0;
     list-style: none;
     text-decoration: none;
-    max-width: 1440px;
+    /*max-width: 1440px;*/
 }
 
 body {
@@ -101,151 +99,7 @@ footer {
     margin-right: 40px;    
 }
 
-/**************************************MENU HAMBURGER MOBILE *********************************************************************/
 
-
-.btn-modal {
-    opacity: 1;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    background-color: transparent;
-    gap: 8px;
-    top: -100px;
-    width: 28px;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    right: 3em;
-    cursor: pointer;  
-  }
-
-  .btn-modal .line {
-    opacity: 1;
-    /* opacity: 0; */
-    height: 1.7px;
-    background-color: #000;
-    display: block;
-    width: 100%;
-    margin: 0;
-    transition: all .3s ease-in-out;
-  }
-  /* Création du bouton pour fermer */
-  .btn-modal.close {
-    z-index:2000;
-    top: 1em;
-    right: 1em;
-  }
-
-#modal__burger:hover .line:nth-child(2),
-.btn-modal.close .line:nth-child(2) {
-    opacity: 0;
-  }
-
-.btn-modal.close .line:first-child {
-    transform: rotate(45deg) translate3d(8px, 6px, 0);
-  }
-
-.btn-modal.close  span.line:last-child {
-    transform: rotate(-45deg) translate3d(8px, -6px, 0);
-  }
-  .modal__content {
-    position: fixed;
-    left: 0;
-    top:117px;
-    opacity: 1;
-    width: 100vw;
-    height: 100vh;
-    background: #E00000; 
-    visibility: visible;
-    transition: visibility 0s, opacity 0.3s linear;
-    transform: translateX(-100%);
-    z-index:1000;
-    overflow-y: auto;
-}
-
-#modal__content .menu-header-menu-container {
-    margin: auto;
-    height: auto;
-    width: 100vw;
-}
-
-#modal__content .menu-header-menu-container ul,
-#modal__content .menu-header-menu-container li {  
-    display: flex;  
-    justify-content: center;
-    text-align: center;    
-    /* align-items: center */
-}
-
-#modal__content .menu-header-menu-container ul {    
-    flex-direction: column;
-    justify-content: space-around;    
-    padding: 35px 20px 25px;
-}
-
-#modal__content .menu-header-menu-container li {   
-    height: 80px;
-}
-
-#modal__content a {
-    color: white;
-    font-size: 23px;
-}
-
-.animate-modal {
-    visibility: visible;
-    opacity: 1;
-    transition: transform 0.3s, ease-in-out, visibility 0s, opacity 0.3s linear;
-    transform: translateX(0);
-    
-}
-
-/* Pour faire apparaitre la moadle en descendant et avec agmentatation de l'opacité */
-@keyframes move-down {
-    0% {
-      transform: translateY(-400px);
-      opacity: 0;
-    }  
-    100% {
-      transform: translateY(0);
-      visibility: visible;
-    }
-  }
-
-
-
-/*---------------------------------------------------- FOOTER ------------------------------------------------------------------------*/
-
-
-#menu-menu-footer {
-
-    display:flex;
-    gap:60px;
-}
-.footer {
-    display:flex;
-    gap: 74px;
-    justify-content: center;
-    border-top: 1px solid black;
-    padding-top:10px;
-    width: 1440px;
-    height: 80px;
-}
-
-.footer-nav a {
-    color:black;
-}
-
-.footer .widget {
-    padding: 0 40px;
-}
-
-.footer-nav {
-    display:flex;
-}
 /*------------------------------------------------------- MODALE CONTACT----------------------------------------------------------------------*/
 
 /* The Modal (background) */
