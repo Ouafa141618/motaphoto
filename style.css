@@ -85,7 +85,7 @@ footer {
     background-color: #ffffff;
     text-align: center;
     align-items: center;  
-    justify-content: center;
+    justify-content: right;
     margin: auto;
     z-index: 100;
 }
