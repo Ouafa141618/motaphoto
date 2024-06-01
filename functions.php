@@ -140,5 +140,6 @@ add_action('wp_ajax_nopriv_filter_photos', 'filter_photos')
     // Enqueue FontAwesome
     wp_enqueue_script('font-awesome', 'https://kit.fontawesome.com/e6187c85ca.js', array(), null, true);
 
-add_action('wp_enqueue_scripts', 'motaphoto_child_enqueue_styles');
+
+
 
