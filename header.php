@@ -18,7 +18,7 @@
     <!-- ICONES FONTAWESOME -->
     <script src="https://kit.fontawesome.com/e6187c85ca.js" crossorigin="anonymous"></script>
 
-    <title>Mota</title>
+    <title>Motaphoto</title>
 
 
 
@@ -41,7 +41,7 @@
                 <!-- Affiche le "Menu princiapal" enregistré au préalable et délcaré dans functions.php -->
                 <?php
                 wp_nav_menu([
-                    'theme_location' => 'main-menu',
+                 //   'theme_location' => 'main-menu',
                     'container' => 'false', //On retire le conteneur généré par WP
 
                 ]);

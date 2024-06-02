@@ -15,7 +15,7 @@ Text Domain: montheme-mota
     padding: 0;
     list-style: none;
     text-decoration: none;
-    /*max-width: 1440px;*/
+    max-width: 1440px;
 }
 
 body {
@@ -87,7 +87,7 @@ footer {
     background-color: #ffffff;
     text-align: center;
     align-items: center;  
-    justify-content: right;
+    justify-content: center;
     margin: auto;
     z-index: 100;
 }
@@ -102,6 +102,35 @@ footer {
 }
 
 
+/*---------------------------------------------------- FOOTER ------------------------------------------------------------------------*/
+
+
+#menu-menu-footer {
+
+    display:flex;
+    gap:60px;
+}
+.footer {
+    display:flex;
+    gap: 74px;
+    justify-content: center;
+    border-top: 1px solid black;
+    padding-top:10px;
+    width: 1440px;
+    height: 80px;
+}
+
+.footer-nav a {
+    color:black;
+}
+
+.footer .widget {
+    padding: 0 40px;
+}
+
+.footer-nav {
+    display:flex;
+}
 /*------------------------------------------------------- MODALE CONTACT----------------------------------------------------------------------*/
 
 /* The Modal (background) */
@@ -188,33 +217,147 @@ label {
 
 }
 
-
-
-/*FOOTER*/
-.footer {
-    width: 768px; 
-    padding-top: 50px; 
-    padding-bottom: 50px;
-
+/*------------------------------------------------------- SINGLE-PHOTOS ----------------------------------------------------------------------*/
+.photo_detail {
+    width: 100%;
+    max-width: 1190px;
+    margin: auto;
+    padding: 30px 20px 0;
+    font-family: 'Space Mono', monospace;
 }
 
-.footer-nav{
-    display:flex; 
-    flex-direction:column;
-    cursor:pointer;
+.post-content {
+    display:flex;
+    flex-direction: row;
+}
+   
+.post-description {
+    justify-content: flex-end;
+    border-bottom: 1px solid #000;
 }
 
-.footer-nav a {
+.title {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 66px;
+    line-height: 58px;
+    width: 80%;
+    padding: 40px 0;
+
+}
+.post-description,
+.post-image {
+    max-height: 890px;
+    width: 50%; 
+}
+
+.description {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.description a{
     color:black;
 }
+.post-image {position: relative;
+    display: flex;
+    object-fit: contain;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin-left: 10px;
+}
 
-.footer-nav a:hover {
-    color:black;
-} 
-#menu-menu-footer {
-    flex-direction: column;
+.openLightbox {
+    position:absolute;
+    cursor: pointer;
+    background: url(./assets/images/fullscreen.png) center center / 100% 100%;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    top: 20px;
+    right: 15px;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+
+
+}
+
+.post-image .openLightbox:hover {
+    opacity:1;
+}
+
+.photo__contact {display:flex;
+    flex-direction: row;
+    padding: 20px 0px 10px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #000;
+   
+}
+
+ .photo_choix {
+    display:flex;
     gap:20px;
-    padding-top: 30px;
-    margin-bottom: 20px;
-  }
+}
+
+.photo_avant img, .photo_apres img{
+    display: flex;
+    padding: 10px;
     
+}
+.gallery-related{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    margin-top: 40px;
+}
+
+/* BOUTON PAGE SINGLE-PHOTO*/
+
+button {
+    border: none;
+    width: 272px;
+    height: 50px;
+ }
+
+.btn a {font-size: 12px;
+}
+
+.btn a:hover{
+    background: #000;
+    color:white;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#contact_btn:hover{
+    color:#fefefe;
+}
+
+.btn-all-photos {
+    display:flex;
+    justify-content: center;
+}
+
+#all-photos {
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    
+}
+
+#all-photos a {
+    color:black;
+}
+
+#all-photos:hover {
+    background-color:black;
+    color:white;
+
+}
+
+#all-photos a:hover{
+    color:white;
+}
