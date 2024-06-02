@@ -13,22 +13,21 @@ function register_my_menus() {
 }
 add_action('after_setup_theme', 'register_my_menus');
 
+// Enregistre les widgets du footer
 function montheme_mota_widgets_init() {
-    register_sidebar(
-        array(
-            'name'          => "Widget footer",
-            'id'            => 'footer-widget',
-            'description'   => 'Widgets pour le pied de page',
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</div>',
-            'before_title'  => '<h2 class="widget-title">',
-            'after_title'   => '</h2>',
-        )
-    );
+    register_sidebar(array(
+        'name'          => "Widget footer",
+        'id'            => 'footer-widget',
+        'description'   => 'Widgets pour le pied de page',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ));
 }
 add_action('widgets_init', 'montheme_mota_widgets_init');
 
-// Déclare les scripts JavaScript
+// Enqueue les scripts JavaScript
 function theme_enqueue_scripts() {
     wp_enqueue_script('custom-script-1', get_stylesheet_directory_uri() . '/js/script.js', array('jquery'), '1.0', true);
     wp_enqueue_script('custom-script-2', get_stylesheet_directory_uri() . '/js/filtre.js', array('jquery'), '1.0', true);
@@ -42,7 +41,7 @@ function theme_enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
-// Déclare le fichier style.css
+// Enqueue le fichier style.css
 function theme_enqueue_styles() {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 }
@@ -72,9 +71,8 @@ function filter_photos() {
     $args = array(
         'post_type' => 'photos',
         'paged' => $page,
-        'posts_per_page' => 10, // Vous pouvez ajuster cela si nécessaire
-        'order' => 'DESC', // Ou 'ASC'
-        // Ajoutez ici d'autres arguments selon vos besoins
+        'posts_per_page' => 10,
+        'order' => 'DESC',
     );
 
     // Ajoutez les termes de la taxonomie 'categories-photos' si nécessaire
@@ -107,7 +105,7 @@ function filter_photos() {
     if (!empty($tri) && in_array($tri, array('2019', '2020', '2021', '2022'))) {
         $args['date_query'] = array(
             array(
-                'year'  => $tri,
+                'year' => $tri,
             ),
         );
     }

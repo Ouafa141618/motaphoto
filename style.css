@@ -10,13 +10,14 @@ Tags: openclassrooms, cookinfamily, cours
 Text Domain: montheme-mota
 */
 
-* {box-sizing: border-box;
+/* {box-sizing: border-box;
     margin: 0;
     padding: 0;
     list-style: none;
     text-decoration: none;
     max-width: 1440px;
 }
+*/
 
 body {
     background: #FFFFFF; 
@@ -69,16 +70,28 @@ nav ul {
     justify-content: flex-end;
     align-items: center;
     gap: 74px;
-    
+    list-style: none; /* Enlève les puces de liste */
+    text-decoration: none; /* Enlève l'effet souligné */
 }
 #menu-menu-header a{
     font-size: 16px;
     color: black;
-    text-transform: uppercase;
+    text-decoration: none; /* Enlève l'effet souligné */
+    list-style: none; /* Enlève les puces de liste */
+   text-transform: uppercase;
+   font-weight: 400;
+}
+header a {
+    text-decoration: none; /* Enlève l'effet souligné */
+    color:#000;
+    font-weight: 400;
+    font-size: 16px;
+
 }
 header a:hover {
     font-weight:bold;
-    color:#121A48;
+    color:black;
+    text-decoration: none; /* Enlève l'effet souligné */
 }
 
 header,
@@ -122,6 +135,8 @@ footer {
 
 .footer-nav a {
     color:black;
+    list-style: none;
+    text-decoration: none; /* Supprime le soulignement */
 }
 
 .footer .widget {
