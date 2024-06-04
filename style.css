@@ -115,6 +115,169 @@ footer {
 }
 
 
+
+/* BOUTON PAGE SINGLE-PHOTO*/
+
+button {
+    border: none;
+    width: 272px;
+    height: 50px;
+ }
+
+.btn a {font-size: 12px;
+}
+
+.btn a:hover{
+    background: #000;
+    color:white;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#contact_btn:hover{
+    color:#fefefe;
+}
+
+.btn-all-photos {
+    display:flex;
+    justify-content: center;
+}
+
+#all-photos {
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    
+}
+
+#all-photos a {
+    color:black;
+}
+
+#all-photos:hover {
+    background-color:black;
+    color:white;
+
+}
+
+#all-photos a:hover{
+    color:white;
+}
+/**************************************MENU HAMBURGER MOBILE *********************************************************************/
+
+
+.btn-modal {
+    opacity: 1;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    background-color: transparent;
+    gap: 8px;
+    top: -100px;
+    width: 28px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    right: 3em;
+    cursor: pointer;  
+  }
+
+  .btn-modal .line {
+    opacity: 1;
+    /* opacity: 0; */
+    height: 1.7px;
+    background-color: #000;
+    display: block;
+    width: 100%;
+    margin: 0;
+    transition: all .3s ease-in-out;
+  }
+  /* Création du bouton pour fermer */
+  .btn-modal.close {
+    z-index:2000;
+    top: 1em;
+    right: 1em;
+  }
+
+#modal__burger:hover .line:nth-child(2),
+.btn-modal.close .line:nth-child(2) {
+    opacity: 0;
+  }
+
+.btn-modal.close .line:first-child {
+    transform: rotate(45deg) translate3d(8px, 6px, 0);
+  }
+
+.btn-modal.close  span.line:last-child {
+    transform: rotate(-45deg) translate3d(8px, -6px, 0);
+  }
+  .modal__content {
+    position: fixed;
+    left: 0;
+    top:117px;
+    opacity: 1;
+    width: 100vw;
+    height: 100vh;
+    background: #E00000; 
+    visibility: visible;
+    transition: visibility 0s, opacity 0.3s linear;
+    transform: translateX(-100%);
+    z-index:1000;
+    overflow-y: auto;
+}
+
+#modal__content .menu-header-menu-container {
+    margin: auto;
+    height: auto;
+    width: 100vw;
+}
+
+#modal__content .menu-header-menu-container ul,
+#modal__content .menu-header-menu-container li {  
+    display: flex;  
+    justify-content: center;
+    text-align: center;    
+    /* align-items: center */
+}
+
+#modal__content .menu-header-menu-container ul {    
+    flex-direction: column;
+    justify-content: space-around;    
+    padding: 35px 20px 25px;
+}
+
+#modal__content .menu-header-menu-container li {   
+    height: 80px;
+}
+
+#modal__content a {
+    color: white;
+    font-size: 23px;
+}
+
+.animate-modal {
+    visibility: visible;
+    opacity: 1;
+    transition: transform 0.3s, ease-in-out, visibility 0s, opacity 0.3s linear;
+    transform: translateX(0);
+    
+}
+
+/* Pour faire apparaitre la moadle en descendant et avec agmentatation de l'opacité */
+@keyframes move-down {
+    0% {
+      transform: translateY(-400px);
+      opacity: 0;
+    }  
+    100% {
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
+
+
+
 /*---------------------------------------------------- FOOTER ------------------------------------------------------------------------*/
 
 
@@ -135,8 +298,6 @@ footer {
 
 .footer-nav a {
     color:black;
-    list-style: none;
-    text-decoration: none; /* Supprime le soulignement */
 }
 
 .footer .widget {
@@ -197,10 +358,6 @@ footer {
     font-family: 'Space Mono', monospace;
     font-size: 14px;
     font-weight: 400;
-width: 263px;
-height: 50px;
-padding: 8px 15px 8px 15px;
-border-radius: 2px 0px 0px 0px;
 }
 
 
@@ -230,7 +387,7 @@ label {
     background-image: url(./images/Contact-header.png) ;
     background-repeat:repeat ;
     width: 100%;
-    height:106px;
+    height:49px;
     overflow:hidden;
     margin-bottom: 10px;
 
@@ -292,7 +449,7 @@ label {
 .openLightbox {
     position:absolute;
     cursor: pointer;
-    background: url(./assets/images/fullscreen.png) center center / 100% 100%;
+    background: url(./images/fullscreen.png) center center / 100% 100%;
     background-repeat: no-repeat;
     width: 50px;
     height: 50px;
@@ -334,49 +491,281 @@ label {
     margin-top: 40px;
 }
 
-/* BOUTON PAGE SINGLE-PHOTO*/
 
-button {
-    border: none;
-    width: 272px;
-    height: 50px;
- }
 
-.btn a {font-size: 12px;
+/*------------------------------------------------------- BLOCK PHOTOS APPARENTES----------------------------------------------------------------------*/
+.photo_aleatoire {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    gap: 20px;
+}
+.photo_aimerezaussi img{
+    width: 564px;
+    height: 495px;
+  object-fit: cover;
 }
 
-.btn a:hover{
-    background: #000;
-    color:white;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-#contact_btn:hover{
-    color:#fefefe;
-}
-
-.btn-all-photos {
+.photo_aimerezaussi {
     display:flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:20px;
+    max-width: 1440px;
+}
+.section3 h3{
+    font-size:18px;
+    font-weight: 400px!important;
 }
 
-#all-photos {
-    justify-content: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
+.section3 {
+    margin-top: 50px;
     
 }
+/*------------------------------------------------- PHOTO BLOCK (gallerie d'images)--------------------------------------------*/
+.gallery {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap: 20px;
+    
+    }
 
-#all-photos a {
-    color:black;
+.photo1 {
+   position:relative;
+ 
+    }
+    
+
+.photo1 img{
+    width: 564px;
+    height: 495px;
+    object-fit: cover;
+    overflow: hidden;
+    cursor:pointer;
+
+}
+.info-title {
+position:absolute;
+bottom:0px;
+left:0px;
+padding: 10px;
+color:white;
+opacity:0;
+text-transform: uppercase;
+
 }
 
-#all-photos:hover {
-    background-color:black;
+.info-tax {
+    position:absolute;
+    bottom:0px;
+    right:0px;
+    padding: 10px;
+    opacity:0;
+    
+    }
+
+    .info-tax a {
+        color:white;
+    }
+
+
+.photo1 h2,
+.photo1 h3,
+.photo1 p {      
+    font-size: 14px !important; 
+    opacity: 0;  
+    z-index: 5;
+    transition: all 0.5s ease-in-out;
+}
+
+.photo1 .info-tax {
+    right: 10px;
+}
+
+.photo1 .detail-photo {
+    position: absolute;
+    cursor: pointer;
+    background: url("./images/Icon_eye.png") center center / 100% 100%;
+    background-repeat: no-repeat;
+    width: 46px;
+    height: 46px;
+    transform: translate3d(-50%, -50%, 0);
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    left:50%;
+    top: 50%;
+}
+.photo1:hover .detail-photo,
+.photo1:hover .openLightbox,
+.photo1:hover .info-title,
+.photo1:hover .info-tax {
+    opacity: 1;
+}
+
+.detail-photo:hover,
+
+.brightness {
+
+    transition: all 0.5s ease-in-out;
+}
+
+.brightness::before {
+    content: "";
+    position: absolute;
+    background-color: #000000;
+    width: 100%;
+    height: 100%;
+    opacity: 0;  
+    transition: all 0.5s ease-in-out;
+}
+
+.brightness:hover::before {
+    opacity: 0.5;
+}
+
+#pagination {
+    text-align: center; 
+    margin-bottom: 65px;
+    margin-top: 60px;
+}
+
+#load-more{display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    cursor: pointer;
+    font-weight:400px;
+
+ }
+ 
+  #load-more:hover {
+    background: black;
     color:white;
+    font-weight:700px!important;
+
+  }
+
+
+.contact {
+    text-transform: none;
+   
+}
+.btn:hover {
+background-color:#000;
+font-weight: 700;
+}
+
+
+
+
+/*****************************FILTRE et tri (filtre.php)************************/
+.filters {
+    display: flex;
+    flex-wrap:nowrap;
+    margin-bottom: 39px;
+
+  }
+
+.filters ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  .filters .filter {
+    position: relative;
+  }
+
+  .filters .filter:nth-child(2) {
+    margin-left: 36px;
+  }
+  .filters .filter:nth-child(3) {
+    margin-left: 325px;
+  }
+  .filters .filter-category,
+  .filters .filter-format,
+  .filters .filter-tri {
+    height: 43px;
+    width: 260px;
+    padding: 0 18px;
+    font-family: "poppins";
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.36px;
+    color: #313144;
+    border-radius: 8px;
+    border: 1.3px solid #B8BBC2;
+    background: transparent;
+    appearance: none; /* Efface la flèche par défaut pour certains navigateurs */
+    
+  }
+  
+  .filters-container {
+    display:flex;
+    justify-content: center;
+  }
+
+  
+
+/************************HERO BANNER (banner.php)*****************************************************/
+
+.photoHero {
+    position: relative; 
+    background-image: url(./images/photoHero.jpeg) ;
+    background-size: cover; /* Assure que l'image couvre tout l'élément */
+    background-position: center; /* Centre l'image de fond */
+    background-repeat: no-repeat; /* Évite la répétition de l'image */
+    width: 100vw; /* Utilise toute la largeur de la fenêtre */
+    height: 100vh; /* Utilise toute la hauteur de la fenêtre */
+    margin: 0; /* Supprime toute marge */
+    padding: 0; /* Supprime tout padding */
 
 }
 
-#all-photos a:hover{
-    color:white;
+.hero-thumbnail {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 100%;
+    max-width: 1100px; 
 }
+
+.hero-thumbnail img {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+.hero-content-banner {
+    width: 1440px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    z-index: 100;
+} 
+
+.photoHero .hero-thumbnail {
+    margin: auto;
+    align-items: center;
+    width: 100%;
+    max-height: 966px;
+} 
+
+.photoHero img {    
+    margin: auto;
+    object-fit: cover;
+    object-position: 50% 50%;
+    height: auto;
+    max-height: 966px;
+}
+
+.photoHero .Titre_header {    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+

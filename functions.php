@@ -109,7 +109,23 @@ function filter_photos() {
             ),
         );
     }
-
+    function create_photo_post_type() {
+        register_post_type('photos',
+            array(
+                'labels' => array(
+                    'name' => __('Photos'),
+                    'singular_name' => __('Photo')
+                ),
+                'public' => true,
+                'has_archive' => true,
+                'supports' => array('title', 'editor', 'thumbnail'),
+                'rewrite' => array('slug' => 'photos'),
+                'taxonomies' => array('category'),
+            )
+        );
+    }
+    add_action('init', 'create_photo_post_type');
+    
     // La requête WP_Query
     $query = new WP_Query($args);
 
