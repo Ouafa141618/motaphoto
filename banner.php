@@ -1,5 +1,4 @@
 <?php
-
 /**
  * HERO DU HEADER
  *
@@ -25,7 +24,8 @@
 
     // Démarrage de la boucle
     while ($loop->have_posts()) : $loop->the_post();
-        the_post_thumbnail();
+        // Supprimer l'affichage de l'image ici
+        // the_post_thumbnail();
     endwhile;
 
     // Réinitialisation des données post
