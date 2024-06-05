@@ -54,6 +54,47 @@ function enqueue_custom_styles_and_scripts() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_styles_and_scripts');
 
+// Crée le type de contenu personnalisé 'photos'
+function create_photo_post_type() {
+    register_post_type('photos',
+        array(
+            'labels' => array(
+                'name' => __('Photos'),
+                'singular_name' => __('Photo')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'supports' => array('title', 'editor', 'thumbnail'),
+            'rewrite' => array('slug' => 'photos')
+        )
+    );
+}
+add_action('init', 'create_photo_post_type');
+
+// Crée les taxonomies 'categories-photos' et 'formats'
+function create_photo_taxonomies() {
+    register_taxonomy(
+        'categories-photos',
+        'photos',
+        array(
+            'label' => __('Catégories Photos'),
+            'rewrite' => array('slug' => 'categories-photos'),
+            'hierarchical' => true,
+        )
+    );
+
+    register_taxonomy(
+        'formats',
+        'photos',
+        array(
+            'label' => __('Formats'),
+            'rewrite' => array('slug' => 'formats'),
+            'hierarchical' => true,
+        )
+    );
+}
+add_action('init', 'create_photo_taxonomies');
+
 // Traitement des requêtes Ajax pour les filtres
 function filter_photos() {
     // Vérifiez le nonce pour la sécurité
@@ -93,14 +134,6 @@ function filter_photos() {
         );
     }
 
-    if (!empty($date) && $format != 'default-format') {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'date',
-            'field' => 'slug',
-            'terms' => $date,
-        );
-    }
-
     // Ajouter la logique de tri par date si nécessaire
     if (!empty($tri) && in_array($tri, array('2019', '2020', '2021', '2022'))) {
         $args['date_query'] = array(
@@ -109,23 +142,7 @@ function filter_photos() {
             ),
         );
     }
-    function create_photo_post_type() {
-        register_post_type('photos',
-            array(
-                'labels' => array(
-                    'name' => __('Photos'),
-                    'singular_name' => __('Photo')
-                ),
-                'public' => true,
-                'has_archive' => true,
-                'supports' => array('title', 'editor', 'thumbnail'),
-                'rewrite' => array('slug' => 'photos'),
-                'taxonomies' => array('category'),
-            )
-        );
-    }
-    add_action('init', 'create_photo_post_type');
-    
+
     // La requête WP_Query
     $query = new WP_Query($args);
 
