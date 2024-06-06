@@ -65,7 +65,8 @@ function create_photo_post_type() {
             'public' => true,
             'has_archive' => true,
             'supports' => array('title', 'editor', 'thumbnail'),
-            'rewrite' => array('slug' => 'photos')
+            'rewrite' => array('slug' => 'photos'),
+            'taxonomies' => array('category'),
         )
     );
 }
@@ -161,3 +162,4 @@ function filter_photos() {
 
 add_action('wp_ajax_filter_photos', 'filter_photos');
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
+?>
