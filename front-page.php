@@ -32,3 +32,30 @@
 </main>
 
 <?php get_footer(); ?>
+
+<script>
+jQuery(document).ready(function($) {
+    var page = 2;
+    $('#load-more').on('click', function() {
+        var data = {
+            'action': 'load_more',
+            'page': page,
+        };
+
+        $.ajax({
+            url: '<?php echo admin_url("admin-ajax.php"); ?>',
+            type: 'POST',
+            data: data,
+            success: function(response) {
+                if (response) {
+                    $('.gallery').append(response);
+                    page++;
+                } else {
+                    $('#load-more').text('Plus de photos');
+                    $('#load-more').prop('disabled', true);
+                }
+            }
+        });
+    });
+});
+</script>

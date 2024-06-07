@@ -535,7 +535,10 @@ label {
 
 .photo1 {
    position:relative;
- 
+   flex: 1 1 calc(50% - 20px); /* Deux colonnes avec espace entre les photos */
+   position: relative;
+   box-sizing: border-box;
+   margin-bottom: 20px
     }
     
 
@@ -714,27 +717,26 @@ font-weight: 700;
 
 /************************HERO BANNER (banner.php)*****************************************************/
 
+/* Styles pour le hero */
 .photoHero {
-    position: relative; 
-    background-image: url(./images/photoHero.jpeg) ;
-    background-size: cover; /* Assure que l'image couvre tout l'élément */
-    background-position: center; /* Centre l'image de fond */
-    background-repeat: no-repeat; /* Évite la répétition de l'image */
-    width: 100vw; /* Utilise toute la largeur de la fenêtre */
-    height: 100vh; /* Utilise toute la hauteur de la fenêtre */
-    margin: 0; /* Supprime toute marge */
-    padding: 0; /* Supprime tout padding */
-
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Ajustez selon vos besoins */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-thumbnail {
     position: absolute;
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    width: 100%;
-    max-width: 1100px; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    max-width: 100%;
 }
+
 
 .hero-thumbnail img {
     width: 100%; 

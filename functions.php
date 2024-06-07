@@ -8,8 +8,10 @@ add_theme_support('title-tag');
 
 // Ajout du menu dans le thème WordPress
 function register_my_menus() {
-    register_nav_menu('main-menu', __('Menu principal', 'text-domain'));
-    register_nav_menu('footer-menu', __('Menu du pied de page', 'text-domain'));
+    register_nav_menus(array(
+        'main-menu' => __('Menu principal', 'text-domain'),
+        'footer-menu' => __('Menu du pied de page', 'text-domain'),
+    ));
 }
 add_action('after_setup_theme', 'register_my_menus');
 
@@ -159,7 +161,31 @@ function filter_photos() {
     wp_reset_postdata(); // Toujours réinitialiser après une requête personnalisée
     wp_die(); // Cela arrête l'exécution de PHP et retourne la réponse
 }
-
 add_action('wp_ajax_filter_photos', 'filter_photos');
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
+
+// Load more photos
+function load_more_photos() {
+    $paged = $_POST['page'];
+    $args = array(
+        'post_type' => 'photos',
+        'posts_per_page' => 8,
+        'paged' => $paged,
+    );
+
+    $photos_query = new WP_Query($args);
+
+    if ($photos_query->have_posts()) :
+        while ($photos_query->have_posts()) : $photos_query->the_post();
+            get_template_part('template-parts/photo-block');
+        endwhile;
+        wp_reset_postdata();
+    else:
+        echo 0;
+    endif;
+
+    wp_die(); // Cela arrête l'exécution de PHP et retourne la réponse
+}
+add_action('wp_ajax_load_more', 'load_more_photos');
+add_action('wp_ajax_nopriv_load_more', 'load_more_photos');
 ?>

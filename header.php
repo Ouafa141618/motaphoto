@@ -34,6 +34,10 @@
         </div>
         <?php include_once 'template-parts/contact.php'; ?>
     </header>
+    <script src="path/to/your/script.js"></script>
+</body>
+</html>
+
 </body>
 
 </html>

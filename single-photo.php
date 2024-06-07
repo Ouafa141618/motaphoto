@@ -67,7 +67,7 @@ get_header();
                     $prev_image = get_the_post_thumbnail_url($prev_post->ID, 'thumbnail');
                     echo '<span class="left">';
                     echo '<img src="' . esc_url($prev_image) . '" alt="' . esc_attr($prev_post->post_title) . '" width="75" height="75"/>';
-                    previous_post_link('%link', '<img src="' . get_template_directory_uri() . '/images/fleche-gauche.png">', false);
+                    previous_post_link('%link', '<img src="' . esc_url(get_template_directory_uri() . '/images/fleche-gauche.png') . '">', false);
                     echo '</span>';
                 }
                 ?>
@@ -79,7 +79,7 @@ get_header();
                     $next_image = get_the_post_thumbnail_url($next_post->ID, 'thumbnail');
                     echo '<span class="right">';
                     echo '<img src="' . esc_url($next_image) . '" alt="' . esc_attr($next_post->post_title) . '" width="75" height="75"/>';
-                    next_post_link('%link', '<img src="' . get_template_directory_uri() . '/images/fleche-droite.png">', false);
+                    next_post_link('%link', '<img src="' . esc_url(get_template_directory_uri() . '/images/fleche-droite.png') . '">', false);
                     echo '</span>';
                 }
                 ?>
