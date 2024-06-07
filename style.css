@@ -525,6 +525,13 @@ label {
     
 }
 /*------------------------------------------------- PHOTO BLOCK (gallerie d'images)--------------------------------------------*/
+.contain-photos {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+
 .gallery {
     display:flex;
     flex-wrap:wrap;
@@ -534,8 +541,7 @@ label {
     }
 
 .photo1 {
-   position:relative;
-   flex: 1 1 calc(50% - 20px); /* Deux colonnes avec espace entre les photos */
+   
    position: relative;
    box-sizing: border-box;
    margin-bottom: 20px
@@ -739,13 +745,12 @@ font-weight: 700;
 
 
 .hero-thumbnail img {
-    width: 100%; 
     height: auto; 
     display: block; 
 }
 
 .hero-content-banner {
-    width: 1440px;
+    width: 100%;
     margin-bottom: 20px;
     z-index: 100;
 } 
