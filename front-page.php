@@ -2,7 +2,9 @@
 
 <main class="home-page">
     <section class="hero-content-banner">
+        <!-- CHARGEMENT DU HERO BANNER -->
         <?php get_template_part('banner'); ?>
+        <!-- CHARGEMENT DES FILTRES -->
         <?php get_template_part('template-parts/filtre'); ?>
     </section>
 

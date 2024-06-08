@@ -1,51 +1,56 @@
 <?php
+
+
 get_header();
+
 ?>
 
 <section class="photo_detail">
-    <!-- Section 1 -->
+    <!-------------------------------- Section 1 ----------------------------------------->
     <div class="post-content">
-        <!-- Colonne gauche/Description -->
+        <!-------------------------------- Colonne gauche/Description ----------------------------------------->
         <div class="post-description">
-            <h2 class="title"><?php the_title(); ?></h2>
+
+            <h2 class="title">
+                <?php the_title(); ?>
+            </h2>
+
             <div class="description">
-                <p>REFERENCE: <?php echo esc_html(get_post_meta(get_the_ID(), 'reference', true)); ?></p>
-                <p>CATEGORIE: 
-                    <?php
-                    $categories = get_the_terms(get_the_ID(), 'categories-photos');
-                    if ($categories && !is_wp_error($categories)) {
-                        $category_names = wp_list_pluck($categories, 'name');
-                        echo esc_html(implode(', ', $category_names));
-                    } else {
-                        echo 'N/A';
-                    }
-                    ?>
+                <p>
+                    REFERENCE: <?php echo get_post_meta(get_the_ID(), 'reference', true); ?>
+                    <!-- ACF  -->
                 </p>
-                <p>TYPE: <?php echo esc_html(get_post_meta(get_the_ID(), 'type', true)); ?></p>
-                <p>FORMAT: 
-                    <?php
-                    $formats = get_the_terms(get_the_ID(), 'formats');
-                    if ($formats && !is_wp_error($formats)) {
-                        $format_names = wp_list_pluck($formats, 'name');
-                        echo esc_html(implode(', ', $format_names));
-                    } else {
-                        echo 'N/A';
-                    }
-                    ?>
+                <p>
+
+                    CATEGORIE: <?php echo the_terms(get_the_ID(), 'categories-photos', false); ?>
+                    <!-- CPT UI -->
                 </p>
-                <p>ANNEE: <?php echo get_the_date('Y'); ?></p>
+                <p>
+                    TYPE: <?php echo get_post_meta(get_the_ID(), 'type', true); ?>
+                </p>
+                <p>
+
+                    FORMAT: <?php echo the_terms(get_the_ID(), 'formats', false); ?>
+                </p>
+
+                <p>
+
+                    ANNEE: <?php echo get_the_date(); ?>
+                </p>
             </div>
         </div>
 
-        <!-- Colonne droite/Photos -->
-        <div class="post-image">
+        <!-------------------------------- Colonne droite/Photos ----------------------------------------->
+    
+        <div class="post-image ">
             <?php if (has_post_thumbnail()) : ?>
                 <figure class="photo1 brightness">
                     <?php the_post_thumbnail(); ?>
                     <div>
-                        <a href="#" class="openLightbox gallery-fullscreen" aria-label="Afficher en plein écran" 
-                           data-src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" 
-                           data-reference="<?php echo esc_attr(get_post_meta(get_the_ID(), 'reference', true)); ?>">
+                        <a href="#" class="openLightbox gallery-fullscreen" 
+                        aria-label="Afficher en plein écran" 
+                        data-src="<?php the_post_thumbnail_url(); ?>" 
+                        data-reference="<?php the_field('reference'); ?>">
                         </a>
                     </div>
                 </figure>
@@ -53,48 +58,61 @@ get_header();
         </div>
     </div>
 
-    <!-- SECTION DU MILIEU -->
+    <!-------------------- SECTION DU MILIEU ------------------->
     <div class="photo__contact">
         <p>Cette photo vous intéresse-t-elle?</p>
         <button class="btn" type="button" id="contact_btn" data-reference="<?php echo esc_attr(get_post_meta(get_the_ID(), 'reference', true)); ?>">Contact</button>
 
-        <!-- PHOTOS APPARENTES -->
+        <!-------------------- PHOTOS APPARENTES ------------------->
+
         <div class="photo_choix">
             <div class="photo_avant">
                 <?php
                 $prev_post = get_previous_post();
+                $next_post = get_next_post();
+
                 if (!empty($prev_post)) {
-                    $prev_image = get_the_post_thumbnail_url($prev_post->ID, 'thumbnail');
-                    echo '<span class="left">';
-                    echo '<img src="' . esc_url($prev_image) . '" alt="' . esc_attr($prev_post->post_title) . '" width="75" height="75"/>';
-                    previous_post_link('%link', '<img src="' . esc_url(get_template_directory_uri() . '/images/fleche-gauche.png') . '">', false);
-                    echo '</span>';
+                    $prev_image = get_the_post_thumbnail_url($prev_post->ID);
+                    previous_post_link(
+                        '<span class="left"><img src="' .
+                            $prev_image . '" alt="' . $prev_post->post_title . '" 
+                            width="75" height="75"/> <a href="' . get_permalink($prev_post) . '" 
+                            rel="prev"><img src="' . get_stylesheet_directory_uri() . '/assets/images/fleche-gauche.png"></a></span>',
+                        '%title',
+                        false
+                    );
                 }
                 ?>
             </div>
             <div class="photo_apres">
                 <?php
-                $next_post = get_next_post();
                 if (!empty($next_post)) {
-                    $next_image = get_the_post_thumbnail_url($next_post->ID, 'thumbnail');
-                    echo '<span class="right">';
-                    echo '<img src="' . esc_url($next_image) . '" alt="' . esc_attr($next_post->post_title) . '" width="75" height="75"/>';
-                    next_post_link('%link', '<img src="' . esc_url(get_template_directory_uri() . '/images/fleche-droite.png') . '">', false);
-                    echo '</span>';
+                    $next_image = get_the_post_thumbnail_url($next_post->ID);
+                    next_post_link(
+                        '<span class="right"><img src="' .
+                            $next_image . '" alt="' . $next_post->post_title . '" 
+                            width="75" height="75"/> <a href="' . get_permalink($next_post) . '" 
+                            rel="next"><img src="' . get_stylesheet_directory_uri() . '/assets/images/fleche-droite.png"></a></span>',
+                        '%title',
+                        false
+                    );
                 }
                 ?>
             </div>
         </div>
     </div>
+
 </section>
 
-<!-- AFFICHAGE DE DEUX PHOTOS DE LA MEME CATEGORIE -->
+<!-- AFFICHAGE DE DEUX PHOTOS DE LA MEME CATEGORIES -->
 <section class="photo_detail">
     <div class="affichage2photos">
         <h3>VOUS AIMEREZ AUSSI</h3>
         <?php
+        // Récupérez les catégories de la photo courante
         $categories = get_the_terms(get_the_ID(), 'categories-photos');
         if ($categories && !is_wp_error($categories)) {
+            // Prenez juste le premier terme
             $category = array_shift($categories);
             $args = array(
                 'post_type' => 'photos',
@@ -123,11 +141,16 @@ get_header();
         ?>
     </div>
 
+
     <div class="btn-all-photos">
         <button id="all-photos" type="button">
-            <a href="<?php echo esc_url(home_url('/')); ?>" aria-label="Page d'accueil de Nathalie Mota">Toutes les photos</a>
+            <a href="http://localhost/motaphoto/" aria-label="Page d'accueil de Nathalie Mota">Toutes les photos</a>
         </button>
     </div>
 </section>
 
 <?php get_footer(); ?>
+
+</div>
+<?php get_footer(); ?>
+
