@@ -31,12 +31,10 @@ add_action('widgets_init', 'montheme_mota_widgets_init');
 
 // Enqueue les scripts JavaScript
 function theme_enqueue_scripts() {
-    wp_enqueue_script('custom-script-1', get_stylesheet_directory_uri() . '/js/script.js', array('jquery'), '1.0', true);
-    wp_enqueue_script('custom-script-2', get_stylesheet_directory_uri() . '/js/filtre.js', array('jquery'), '1.0', true);
-    wp_enqueue_script('custom-script-3', get_stylesheet_directory_uri() . '/js/lightbox.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('custom-script', get_stylesheet_directory_uri() . '/js/script.js', array('jquery'), '1.0', true);
 
     // Localisation des scripts pour les requêtes AJAX
-    wp_localize_script('custom-script-2', 'frontendajax', array(
+    wp_localize_script('custom-script', 'frontendajax', array(
         'ajaxurl' => admin_url('admin-ajax.php'),
         'nonce' => wp_create_nonce('filter_photos_nonce')
     ));
@@ -188,4 +186,15 @@ function load_more_photos() {
 }
 add_action('wp_ajax_load_more', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more', 'load_more_photos');
+
+// Enqueue les scripts pour la modale
+function my_enqueue_modal_scripts() {
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('custom-modal-script', get_template_directory_uri() . '/js/script.js', array('jquery'), null, true);
+    wp_localize_script('custom-modal-script', 'modalData', array(
+        'ajax_url' => admin_url('admin-ajax.php')
+    ));
+}
+add_action('wp_enqueue_scripts', 'my_enqueue_modal_scripts');
+
 ?>

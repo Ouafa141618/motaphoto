@@ -310,58 +310,38 @@ button {
     display:flex;
 }
 /*------------------------------------------------------- MODALE CONTACT----------------------------------------------------------------------*/
-
-/* The Modal (background) */
-
-
-.modal {
-    display: none; /* Caché par défaut */
+/* Styles pour la modal */
+.contactModal {
+    display: none; /* Cette propriété est correcte, la modale est masquée par défaut */
     position: fixed;
-    z-index: 1;
-    padding-top: 100px;
+    z-index: 1000; /* Augmenté pour s'assurer que la modale est au-dessus de tout */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);/* Black w/ opacity */
+    background-color: rgba(0,0,0,0.4);
 }
 
-/*Le contenu de la Modale */
+/* Styles pour le contenu de la modal */
 .modal-content {
-    position:relative;
-    width: 80%;
-    background-color: #fefefe;
-    margin: auto;  
-    padding:15px 0;  
+    position: relative;
+    margin: 15% auto;
+    padding: 20px;
     border: 5px solid black;
+    width: 80%; /* Ajustement pour s'assurer que la largeur n'est pas trop grande */
     max-width: 600px;
+    background-color: #fefefe;
+    border-radius: 8px; /* Ajout du border-radius */
 }
 
-.popup-informations {    
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding: 5px 0 70px;
-    max-width: 265px;
-    margin: auto;
+/* Styles pour le bouton de fermeture */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
-
-
-
-.wpcf7-form p input {
-    height: 40px;
-    padding: 10px;
-}
-
-
-.wpcf7-form p .wpcf7-submit {     
-    font-family: 'Space Mono', monospace;
-    font-size: 14px;
-    font-weight: 400;
-}
-
 
 .close:hover,
 .close:focus {
@@ -370,30 +350,43 @@ button {
     cursor: pointer;
 }
 
-.wpcf7-form-control {
+/* Styles pour les éléments de formulaire */
+.wpcf7-form p input,
+.wpcf7-textarea {
+    padding: 10px;
+    width: calc(100% - 20px); /* Ajustement pour correspondre à la largeur parent */
     border-radius: 8px;
-    color:black;
 }
-.wpcf7-submit .has-spinner {
-    width:260px;
-    height:50px;
+
+.wpcf7-submit {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    padding: 12px 0; /* Ajustement du padding pour un bouton plus grand */
+    border-radius: 8px;
 }
-label {
+
+.form-field {
     font-size: 12px;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     font-weight: 500;
+    text-align: left;
+    margin-bottom: 10px; /* Ajout de marges pour espacer les champs */
 }
 
+
+/* Styles pour le titre de contact */
 .titre-contact {
-    background-image: url(./images/Contact-header.png) ;
-    background-repeat:repeat ;
+    background-image: url(./images/Contact-header.png);
+    background-repeat: repeat;
     width: 100%;
-    height:49px;
-    overflow:hidden;
+    height: 49px;
+    overflow: hidden;
     margin-bottom: 10px;
-
 }
+
 
 /*------------------------------------------------------- SINGLE-PHOTOS ----------------------------------------------------------------------*/
 .photo_detail {
@@ -745,6 +738,7 @@ font-weight: 700;
 
 
 .hero-thumbnail img {
+
     height: auto; 
     display: block; 
 }
@@ -777,3 +771,347 @@ font-weight: 700;
     transform: translate3d(-50%, -50%, 0);
 }
 
+/************************************ LIGHTBOX*******************************/
+
+.lightbox {
+
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+      
+}
+
+.lightbox.lightbox-visible {
+    display: flex;
+  }
+
+  .lightbox-close,
+  .lightbox-next,
+  .lightbox-prev {
+    position: absolute;
+    cursor: pointer;
+    color: #fff;
+  }
+  .lightbox-close {
+    background: url("./images/close-lightbox.png") center center / 100% 100%;
+    z-index: 1;
+    top: 125px;
+    right: 100px;
+    width: 30px;
+    height: 30px;
+  }
+
+ 
+  .lightbox-next {
+    bottom: 50%;
+    right: 120px;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .lightbox-prev {
+    bottom: 50%;
+    left: 120px;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .lightbox-content {
+    position: relative;
+    margin: auto;
+  }
+  .lightbox-content img {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+  }
+  .lightbox-content .lightbox-title,
+  .lightbox-content .lightbox-category,
+  .lightbox-content .lightbox-reference {
+    position: absolute;
+    text-transform: uppercase;
+  }
+  .lightbox-content .lightbox-title {
+    left: 0;
+    bottom: -28px;
+  }otoHero
+  .lightbox-content .lightbox-reference {
+    left: 0;
+    bottom: -28px;
+  }
+  .lightbox-content .lightbox-category {
+    right: 0;
+    bottom: -28px;
+  }
+
+
+
+/*  **********************************  */
+/*    Media query : max-width: 1200px    */
+/*  **********************************  */
+
+@media screen and (max-width: 1200px) {
+ 
+    .container-header {
+        width: 90vw;
+
+   }
+    .hero-content-banner img {    
+        width: 1200px;
+       
+    }
+    .photoHero .Titre_header {
+        max-width:1000px;
+        left:40%;
+    }
+   
+    .contain-photos .photo1  {
+        gap:20px;
+        width: 560px;
+        height: 495px;
+    }
+    .filters{
+        padding: 0 20px;
+    }        
+
+}
+
+/*  **********************************  */
+/*    Media query : max-width: 1023px    */
+/*  **********************************  */
+
+@media screen and (max-width: 1023px) {
+    
+    header {
+        height: 70px;
+    }
+
+    .hero-content-banner img {    
+        width: 1023px;
+       
+    }
+
+    .hero-content-banner{    
+        max-width: 1023px;
+       
+    }
+
+    .photoHero img {    
+        max-height: 766px;
+    }
+    
+    .photoHero .Titre_header {
+        left: 35%;
+    }
+
+
+}
+
+
+
+/*  **********************************  */
+/*    Media query : max-width: 768px    */
+/*  **********************************  */
+@media all and (max-width: 768px) {
+
+    nav ul {
+        display: flex;
+        flex-direction: column;}
+
+    .container-header img {
+        width: 138px;
+        }
+      
+    
+        #menu-menu-header {
+            opacity: 0;
+        }
+    
+        .menu-menu-header1 a{
+            display: block;
+            transform: translateY(-200px);
+            height: 0;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 15px;
+            gap:15px;
+    
+        }
+    
+        .gallery .photo1 { 
+         
+            margin: 10px auto;
+            box-sizing: border-box; 
+        }
+        #modal__content .menu-menu-header1 {
+            opacity: 1;
+            height: auto;
+          
+        }
+
+        .modal__content {
+            padding-top: 115px;
+        }
+        
+        #modal__content .menu-menu-header1 a{
+            display: block;
+            transform: translateY(0);
+            height: 0;
+        }
+        
+        #modal__burger {
+            opacity: 1;
+            top: 0;
+        }
+    
+        #nav .menu-menu-header1,
+        #nav #modal__burger {
+            margin-right: 45px;
+        }
+    
+    .hero-content-banner {   
+        max-width: 768px;
+        max-height:500px;
+    }
+
+    .hero-content-banner img {   
+        max-width: 768px;
+        max-height:500px;
+    }
+    
+    .hero-content-banner .Titre_header {
+        max-width: 700px;
+        left:50%;
+    }
+
+
+
+    .photo1 h2,
+    .photo1 h3,
+    .photo1 p {      
+        font-size: 12px !important;
+        line-height: 18px;  
+    }
+
+/*FOOTER*/
+.footer {
+    width: 768px; 
+    padding-top: 50px; 
+    padding-bottom: 50px;
+
+}
+
+.footer-nav{
+    display:flex; 
+    flex-direction:column;
+    cursor:pointer;
+}
+
+.footer-nav a {
+    color:black;
+}
+
+.footer-nav a:hover {
+    color:black;
+} 
+#menu-menu-footer {
+    flex-direction: column;
+    gap:20px;
+    padding-top: 30px;
+    margin-bottom: 20px;
+  }
+    
+/*FILTRE*/
+.filters {
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+    
+.filters .filter{
+    width: 100%;
+    margin-left:0;
+    margin-bottom: 10px;
+}
+
+.filters .filter-category
+.filters .filter-format,
+.filters .filter-tri{
+    width: 120px;
+    margin: 0 auto;
+}
+.filters .filter:nth-child(3) {
+    margin-left: 20px      
+
+}
+
+
+
+.menu-item {
+    width: 100%;
+    text-align:center;
+}
+.post-description{
+    width:100%;
+}
+.post-description h2 {
+    font-size:46px;
+}
+
+.description {
+    margin-bottom:30px;
+}
+
+.photo__contact .btn {
+    margin-top: 30px;
+}
+.post-content {
+    flex-direction:column-reverse;
+    justify-content:center;
+    align-items: center;
+}
+
+.photo_choix{
+    visibility:hidden;
+}
+.photo__contact {
+    flex-direction: column;
+}
+
+.gallery-related  {
+
+    flex-direction:column;
+    align-items:center;
+}
+
+#all-photos{
+    visibility: hidden;
+}
+
+}
+
+
+
+/*  **********************************  */
+/*    Media query : max-width: 580px    */
+/*  **********************************  */
+@media all and (max-width: 580px) {
+    .filters {
+        width: 180px;
+    }
+
+    .photo1 h2,
+    .photo1 h3,
+    .photo1 p {      
+        font-size: 10px !important;
+        line-height: 14px !important;  
+    }
+}

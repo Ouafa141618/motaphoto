@@ -1,16 +1,12 @@
 <?php
-
-
 get_header();
-
 ?>
 
 <section class="photo_detail">
-    <!-------------------------------- Section 1 ----------------------------------------->
+    <!-- Contenu existant -->
     <div class="post-content">
-        <!-------------------------------- Colonne gauche/Description ----------------------------------------->
+        <!-- Colonne gauche/Description -->
         <div class="post-description">
-
             <h2 class="title">
                 <?php the_title(); ?>
             </h2>
@@ -18,39 +14,32 @@ get_header();
             <div class="description">
                 <p>
                     REFERENCE: <?php echo get_post_meta(get_the_ID(), 'reference', true); ?>
-                    <!-- ACF  -->
                 </p>
                 <p>
-
                     CATEGORIE: <?php echo the_terms(get_the_ID(), 'categories-photos', false); ?>
-                    <!-- CPT UI -->
                 </p>
                 <p>
                     TYPE: <?php echo get_post_meta(get_the_ID(), 'type', true); ?>
                 </p>
                 <p>
-
                     FORMAT: <?php echo the_terms(get_the_ID(), 'formats', false); ?>
                 </p>
-
                 <p>
-
                     ANNEE: <?php echo get_the_date(); ?>
                 </p>
             </div>
         </div>
 
-        <!-------------------------------- Colonne droite/Photos ----------------------------------------->
-    
-        <div class="post-image ">
+        <!-- Colonne droite/Photos -->
+        <div class="post-image">
             <?php if (has_post_thumbnail()) : ?>
                 <figure class="photo1 brightness">
                     <?php the_post_thumbnail(); ?>
                     <div>
                         <a href="#" class="openLightbox gallery-fullscreen" 
-                        aria-label="Afficher en plein écran" 
-                        data-src="<?php the_post_thumbnail_url(); ?>" 
-                        data-reference="<?php the_field('reference'); ?>">
+                           aria-label="Afficher en plein écran" 
+                           data-src="<?php the_post_thumbnail_url(); ?>" 
+                           data-reference="<?php the_field('reference'); ?>">
                         </a>
                     </div>
                 </figure>
@@ -58,13 +47,12 @@ get_header();
         </div>
     </div>
 
-    <!-------------------- SECTION DU MILIEU ------------------->
+    <!-- SECTION DU MILIEU -->
     <div class="photo__contact">
         <p>Cette photo vous intéresse-t-elle?</p>
         <button class="btn" type="button" id="contact_btn" data-reference="<?php echo esc_attr(get_post_meta(get_the_ID(), 'reference', true)); ?>">Contact</button>
 
-        <!-------------------- PHOTOS APPARENTES ------------------->
-
+        <!-- PHOTOS APPARENTES -->
         <div class="photo_choix">
             <div class="photo_avant">
                 <?php
@@ -101,7 +89,6 @@ get_header();
             </div>
         </div>
     </div>
-
 </section>
 
 <!-- AFFICHAGE DE DEUX PHOTOS DE LA MEME CATEGORIES -->
@@ -109,15 +96,13 @@ get_header();
     <div class="affichage2photos">
         <h3>VOUS AIMEREZ AUSSI</h3>
         <?php
-        // Récupérez les catégories de la photo courante
         $categories = get_the_terms(get_the_ID(), 'categories-photos');
         if ($categories && !is_wp_error($categories)) {
-            // Prenez juste le premier terme
             $category = array_shift($categories);
             $args = array(
                 'post_type' => 'photos',
                 'posts_per_page' => 2,
-                'post__not_in' => array(get_the_ID()), // Exclure la photo actuelle
+                'post__not_in' => array(get_the_ID()),
                 'tax_query' => array(
                     array(
                         'taxonomy' => 'categories-photos',
@@ -141,16 +126,10 @@ get_header();
         ?>
     </div>
 
-
     <div class="btn-all-photos">
         <button id="all-photos" type="button">
             <a href="http://localhost/motaphoto/" aria-label="Page d'accueil de Nathalie Mota">Toutes les photos</a>
         </button>
     </div>
 </section>
-
 <?php get_footer(); ?>
-
-</div>
-<?php get_footer(); ?>
-
