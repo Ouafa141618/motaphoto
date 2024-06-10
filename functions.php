@@ -29,8 +29,12 @@ function montheme_mota_widgets_init() {
 }
 add_action('widgets_init', 'montheme_mota_widgets_init');
 
-// Enqueue les scripts JavaScript
-function theme_enqueue_scripts() {
+// Enqueue les scripts et styles
+function theme_enqueue_scripts_and_styles() {
+    // Enqueue style parent
+    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+
+    // Enqueue custom script
     wp_enqueue_script('custom-script', get_stylesheet_directory_uri() . '/js/script.js', array('jquery'), '1.0', true);
 
     // Localisation des scripts pour les requêtes AJAX
@@ -38,21 +42,12 @@ function theme_enqueue_scripts() {
         'ajaxurl' => admin_url('admin-ajax.php'),
         'nonce' => wp_create_nonce('filter_photos_nonce')
     ));
-}
-add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
-// Enqueue le fichier style.css
-function theme_enqueue_styles() {
-    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
-}
-add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
-
-// Enqueue Google Fonts et FontAwesome
-function enqueue_custom_styles_and_scripts() {
+    // Enqueue Google Fonts et FontAwesome
     wp_enqueue_style('motaphoto-google-fonts', 'https://fonts.googleapis.com/css2?family=Space+Mono&family=Poppins&display=swap', false);
     wp_enqueue_script('font-awesome', 'https://kit.fontawesome.com/e6187c85ca.js', array(), null, true);
 }
-add_action('wp_enqueue_scripts', 'enqueue_custom_styles_and_scripts');
+add_action('wp_enqueue_scripts', 'theme_enqueue_scripts_and_styles');
 
 // Crée le type de contenu personnalisé 'photos'
 function create_photo_post_type() {
@@ -107,7 +102,7 @@ function filter_photos() {
     $category = $_POST['categories_photos'];
     $format = $_POST['formats'];
     $tri = $_POST['tri'];
-    $page = $_POST['page'];
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
 
     // Configuration de la requête
     $args = array(
@@ -139,7 +134,7 @@ function filter_photos() {
     if (!empty($tri) && in_array($tri, array('2019', '2020', '2021', '2022'))) {
         $args['date_query'] = array(
             array(
-                'year' => $tri,
+                'year' => intval($tri),
             ),
         );
     }
@@ -164,7 +159,11 @@ add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
 
 // Load more photos
 function load_more_photos() {
-    $paged = $_POST['page'];
+    if (!isset($_POST['page'])) {
+        wp_die();
+    }
+
+    $paged = intval($_POST['page']);
     $args = array(
         'post_type' => 'photos',
         'posts_per_page' => 8,

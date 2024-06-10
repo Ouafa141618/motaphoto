@@ -1,9 +1,6 @@
 <div class="filters-container">
-
-
     <div class="filters">
         <div class="filter">
-
             <select name="categories-photos" id="filter-category" class="filter-category">
                 <option value="default-category">Catégories</option>
                 <?php
@@ -36,19 +33,9 @@
         <div class="filter">
             <select name="tri" id="filter-tri" class="filter-tri">
                 <option value="default-tri">Trier par</option>
-                <?php
-                $dates = get_terms(array(
-                    'taxonomy' => 'date',
-                    'hide_empty' => false,
-                ));
-                if (!empty($dates) && !is_wp_error($dates)) {
-                    foreach ($dates as $date) {
-                        echo '<option value="' . $date->slug . '">' . $date->name . '</option>';
-                    }
-                }
-                ?>
+                <option value="date_desc">Du plus récent au plus ancien</option>
+                <option value="date_asc">Du plus ancien au plus récent</option>
             </select>
         </div>
-
     </div>
 </div>

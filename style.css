@@ -312,7 +312,7 @@ button {
 /*------------------------------------------------------- MODALE CONTACT----------------------------------------------------------------------*/
 /* Styles pour la modal */
 .contactModal {
-    display: none; /* Cette propriété est correcte, la modale est masquée par défaut */
+   /* display: none; /* Cette propriété est correcte, la modale est masquée par défaut */
     position: fixed;
     z-index: 1000; /* Augmenté pour s'assurer que la modale est au-dessus de tout */
     left: 0;

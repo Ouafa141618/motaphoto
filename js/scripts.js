@@ -47,6 +47,3 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ajouter un événement au bouton pour charger plus de photos
     loadMoreButton.addEventListener('click', showPhotos);
 });
-
-
-    
