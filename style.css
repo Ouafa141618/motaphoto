@@ -335,7 +335,13 @@ button {
     background-color: #fefefe;
     border-radius: 8px; /* Ajout du border-radius */
 }
-
+.modal-body {    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0 70px;
+    max-width: 265px;
+    margin: auto;
+}
 /* Styles pour le bouton de fermeture */
 .close {
     color: #aaa;
@@ -354,23 +360,18 @@ button {
 /* Styles pour les éléments de formulaire */
 .wpcf7-form p input,
 .wpcf7-textarea {
-    border-radius: 8px;
-    width: 263px;
-height: 63px;
-top: 170px;
-left: 165px;
-padding: 1px 0px 0px 0px;
-gap: 2px;
-opacity: 0px;
-
-}
-
+    width: 100%;
+    border-radius: 0px;
+    border: 1px solid #000000;   }
+    .wpcf7-form p input{
+        height:40px;
+    }
 .wpcf7-submit {
     font-family: 'Space Mono', monospace;
     font-size: 14px;
     font-weight: 400;
     width: 100%;
-    padding: 12px 0; /* Ajustement du padding pour un bouton plus grand */
+    padding: 8px 15px 8px 15px; /* Ajustement du padding pour un bouton plus grand */
     border-radius: 8px;
 }
 
