@@ -371,7 +371,7 @@ button {
     font-size: 14px;
     font-weight: 400;
     width: 100%;
-    padding: 8px 15px 8px 15px; /* Ajustement du padding pour un bouton plus grand */
+    padding: 8px 15px 8px; /* Ajustement du padding pour un bouton plus grand */
     border-radius: 8px;
 }
 
@@ -722,7 +722,40 @@ font-weight: 700;
 
 /************************HERO BANNER (banner.php)*****************************************************/
 
-/* Styles pour le hero */
+/* Styles pour le titre de la bannière */
+.title-hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate3d(-50%, -50%, 0);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 96px; /* Taille de la police */
+    line-height: 142px; /* Hauteur de ligne */
+    font-style: italic;
+    color: transparent; /* Couleur transparente pour l'intérieur des lettres */
+    -webkit-text-stroke: 0.5px rgb(255, 255, 255); /* Contour très fin */
+    z-index: 2; /* Assurez-vous que le titre est au-dessus des autres éléments */
+
+}
+
+
+/* Assurez-vous que le conteneur est bien positionné */
+.title-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 100%;
+    text-align: center;
+}
+
+.hero-thumbnail {
+    position: relative;
+    z-index: 1;
+}
+
 .photoHero {
     background-size: cover;
     background-position: center;
@@ -733,36 +766,25 @@ font-weight: 700;
     align-items: center;
 }
 
-.hero-thumbnail {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    max-width: 100%;
-}
-
-
 .hero-thumbnail img {
-
-    height: auto; 
-    display: block; 
+    height: auto;
+    display: block;
 }
 
 .hero-content-banner {
     width: 100%;
     margin-bottom: 20px;
     z-index: 100;
-} 
+}
 
 .photoHero .hero-thumbnail {
     margin: auto;
     align-items: center;
     width: 100%;
     max-height: 966px;
-} 
+}
 
-.photoHero img {    
+.photoHero img {
     margin: auto;
     object-fit: cover;
     object-position: 50% 50%;
@@ -770,7 +792,7 @@ font-weight: 700;
     max-height: 966px;
 }
 
-.photoHero .Titre_header {    
+.photoHero .Titre_header {
     position: absolute;
     top: 50%;
     left: 50%;

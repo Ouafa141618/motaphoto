@@ -30,6 +30,8 @@ wp_reset_postdata();
 
 <div class="photoHero" style="background-image: url('<?php echo esc_url($background_image); ?>');">
     <div class="hero-thumbnail">
-        <img class="Titre_header" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/Titre-header.png" alt="logo">
+        <div class="title-container">
+            <h1 class="title-hero">Photographe Event</h1>
+        </div>
     </div>
 </div>
