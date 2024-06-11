@@ -311,8 +311,8 @@ button {
 }
 /*------------------------------------------------------- MODALE CONTACT----------------------------------------------------------------------*/
 /* Styles pour la modal */
-.contactModal {
-   /* display: none; /* Cette propriété est correcte, la modale est masquée par défaut */
+.modal {
+    display: none; /* Cette propriété est correcte, la modale est masquée par défaut */
     position: fixed;
     z-index: 1000; /* Augmenté pour s'assurer que la modale est au-dessus de tout */
     left: 0;
@@ -330,6 +330,7 @@ button {
     padding: 20px;
     border: 5px solid black;
     width: 80%; /* Ajustement pour s'assurer que la largeur n'est pas trop grande */
+    height: 769px;
     max-width: 600px;
     background-color: #fefefe;
     border-radius: 8px; /* Ajout du border-radius */
@@ -353,9 +354,15 @@ button {
 /* Styles pour les éléments de formulaire */
 .wpcf7-form p input,
 .wpcf7-textarea {
-    padding: 10px;
-    width: calc(100% - 20px); /* Ajustement pour correspondre à la largeur parent */
     border-radius: 8px;
+    width: 263px;
+height: 63px;
+top: 170px;
+left: 165px;
+padding: 1px 0px 0px 0px;
+gap: 2px;
+opacity: 0px;
+
 }
 
 .wpcf7-submit {
@@ -376,7 +383,6 @@ button {
     margin-bottom: 10px; /* Ajout de marges pour espacer les champs */
 }
 
-
 /* Styles pour le titre de contact */
 .titre-contact {
     background-image: url(./images/Contact-header.png);
@@ -386,7 +392,6 @@ button {
     overflow: hidden;
     margin-bottom: 10px;
 }
-
 
 /*------------------------------------------------------- SINGLE-PHOTOS ----------------------------------------------------------------------*/
 .photo_detail {

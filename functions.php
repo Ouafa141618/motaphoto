@@ -35,13 +35,7 @@ function theme_enqueue_scripts_and_styles() {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 
     // Enqueue custom script
-    wp_enqueue_script('custom-script', get_stylesheet_directory_uri() . '/js/script.js', array('jquery'), '1.0', true);
-
-    // Localisation des scripts pour les requêtes AJAX
-    wp_localize_script('custom-script', 'frontendajax', array(
-        'ajaxurl' => admin_url('admin-ajax.php'),
-        'nonce' => wp_create_nonce('filter_photos_nonce')
-    ));
+    wp_enqueue_script('custom-script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0', true);
 
     // Enqueue Google Fonts et FontAwesome
     wp_enqueue_style('motaphoto-google-fonts', 'https://fonts.googleapis.com/css2?family=Space+Mono&family=Poppins&display=swap', false);
@@ -91,109 +85,9 @@ function create_photo_taxonomies() {
 }
 add_action('init', 'create_photo_taxonomies');
 
-// Traitement des requêtes Ajax pour les filtres
-function filter_photos() {
-    // Vérifiez le nonce pour la sécurité
-    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'filter_photos_nonce')) {
-        wp_die('La sécurité de la requête n\'a pas pu être vérifiée.');
-    }
-
-    // Récupération des valeurs
-    $category = $_POST['categories_photos'];
-    $format = $_POST['formats'];
-    $tri = $_POST['tri'];
-    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
-
-    // Configuration de la requête
-    $args = array(
-        'post_type' => 'photos',
-        'paged' => $page,
-        'posts_per_page' => 10,
-        'order' => 'DESC',
-    );
-
-    // Ajoutez les termes de la taxonomie 'categories-photos' si nécessaire
-    if (!empty($category) && $category != 'default-category') {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'categories-photos',
-            'field' => 'slug',
-            'terms' => $category,
-        );
-    }
-
-    // Ajoutez les termes de la taxonomie 'formats' si nécessaire
-    if (!empty($format) && $format != 'default-format') {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'formats',
-            'field' => 'slug',
-            'terms' => $format,
-        );
-    }
-
-    // Ajouter la logique de tri par date si nécessaire
-    if (!empty($tri) && in_array($tri, array('2019', '2020', '2021', '2022'))) {
-        $args['date_query'] = array(
-            array(
-                'year' => intval($tri),
-            ),
-        );
-    }
-
-    // La requête WP_Query
-    $query = new WP_Query($args);
-
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            get_template_part('template-parts/photo-block');
-        }
-    } else {
-        echo 'Aucune photo trouvée.';
-    }
-
-    wp_reset_postdata(); // Toujours réinitialiser après une requête personnalisée
-    wp_die(); // Cela arrête l'exécution de PHP et retourne la réponse
-}
-add_action('wp_ajax_filter_photos', 'filter_photos');
-add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
-
-// Load more photos
-function load_more_photos() {
-    if (!isset($_POST['page'])) {
-        wp_die();
-    }
-
-    $paged = intval($_POST['page']);
-    $args = array(
-        'post_type' => 'photos',
-        'posts_per_page' => 8,
-        'paged' => $paged,
-    );
-
-    $photos_query = new WP_Query($args);
-
-    if ($photos_query->have_posts()) :
-        while ($photos_query->have_posts()) : $photos_query->the_post();
-            get_template_part('template-parts/photo-block');
-        endwhile;
-        wp_reset_postdata();
-    else:
-        echo 0;
-    endif;
-
-    wp_die(); // Cela arrête l'exécution de PHP et retourne la réponse
-}
-add_action('wp_ajax_load_more', 'load_more_photos');
-add_action('wp_ajax_nopriv_load_more', 'load_more_photos');
-
 // Enqueue les scripts pour la modale
 function my_enqueue_modal_scripts() {
     wp_enqueue_script('jquery');
     wp_enqueue_script('custom-modal-script', get_template_directory_uri() . '/js/script.js', array('jquery'), null, true);
-    wp_localize_script('custom-modal-script', 'modalData', array(
-        'ajax_url' => admin_url('admin-ajax.php')
-    ));
 }
 add_action('wp_enqueue_scripts', 'my_enqueue_modal_scripts');
-
-?>

@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,10 +31,7 @@
         </div>
         <?php include_once 'template-parts/contact.php'; ?>
     </header>
-    <script src="path/to/your/script.js"></script>
-</body>
-</html>
 
+    <?php wp_footer(); ?>
 </body>
-
 </html>
