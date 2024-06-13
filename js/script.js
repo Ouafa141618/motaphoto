@@ -67,37 +67,4 @@ jQuery(document).ready(function($) {
             }
         });
     });
-
-    // Ouverture des informations de la photo
-    $(document).on('click', '.detail-photo', function(event) {
-        event.preventDefault();
-        var photoId = $(this).closest('.photo1').data('photo-id');
-        window.location.href = '/photo/' + photoId; // Rediriger vers la page de détails de la photo
-    });
-
-    // Pré-remplissage du formulaire de contact
-    $('#contact_btn').on('click', function() {
-        var refPhoto = $(this).data('reference');
-        $('#myModal #ref_photo').val(refPhoto);
-        $('#myModal').fadeIn();
-    });
-
-    // Fermer la modal de contact
-    $('.close').on('click', function() {
-        $(this).parents('.modal').fadeOut();
-    });
-
-    $(window).on('click', function(event) {
-        if ($(event.target).is('#myModal')) {
-            $(event.target).fadeOut();
-        }
-    });
-
-    // Navigation entre les photos avec prévisualisation
-    $('.photo-nav-link').hover(function() {
-        var thumbSrc = $(this).data('thumb');
-        $(this).append('<div class="photo-nav-thumb"><img src="' + thumbSrc + '" alt=""></div>');
-    }, function() {
-        $('.photo-nav-thumb').remove();
-    });
 });

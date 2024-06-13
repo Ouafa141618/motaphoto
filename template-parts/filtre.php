@@ -1,7 +1,7 @@
 <div class="filters-container">
     <div class="filters">
         <div class="filter">
-            <label for="filter-category" class="filter-label">CATEGORIES</label>
+            <label for="filter-category" class="filter-label">Catégories</label>
             <select name="categories-photos" id="filter-category" class="filter-category">
                 <option value="default-category"></option>
                 <?php
@@ -17,7 +17,7 @@
         </div>
 
         <div class="filter">
-            <label for="filter-format" class="filter-label">FORMATS</label>
+            <label for="filter-format" class="filter-label">Formats</label>
             <select name="formats" id="filter-format" class="filter-format">
                 <option value="default-format"></option>
                 <?php
@@ -33,7 +33,7 @@
         </div>
 
         <div class="filter">
-            <label for="filter-tri" class="filter-label">TRIER PAR</label>
+            <label for="filter-tri" class="filter-label">Trier par</label>
             <select name="tri" id="filter-tri" class="filter-tri">
                 <option value="default-tri"></option>
                 <option value="date_desc">Du plus récent au plus ancien</option>
