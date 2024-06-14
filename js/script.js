@@ -44,6 +44,22 @@ jQuery(document).ready(function($) {
         fetchPhotos();
     });
 
+    jQuery(document).ready(function($) {
+        $('.detail-photo').on('click', function(event) {
+            event.preventDefault();
+            var photoId = $(this).closest('figure').data('photo-id');
+            window.location.href = '/photo/' + photoId;
+        });
+    
+        $('.openLightbox').on('click', function(event) {
+            event.preventDefault();
+            var imgSrc = $(this).data('src');
+            var imgRef = $(this).data('reference');
+            // Logique pour afficher l'image dans une lightbox
+        });
+    });
+    
+    
     // Gestion du bouton "Charger plus"
     var page = 2;
     $('#load-more').on('click', function() {

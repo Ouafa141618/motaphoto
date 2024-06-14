@@ -165,4 +165,5 @@ function load_more_photos() {
 }
 add_action('wp_ajax_load_more', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more', 'load_more_photos');
+
 ?>

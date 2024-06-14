@@ -396,7 +396,7 @@ button {
 }
 
 /*------------------------------------------------------- SINGLE-PHOTOS ----------------------------------------------------------------------*/
-.photo Details {
+.photo_detail {
     width: 100%;
     max-width: 1190px;
     margin: auto;
@@ -590,7 +590,7 @@ button {
 .photo1 .detail-photo {
     position: absolute;
     cursor: pointer;
-    background: url("./images/Icon_eye.png") center center / 100% 100%;
+    background: url("path/to/eye-icon.png") center center / 100% 100%;
     background-repeat: no-repeat;
     width: 46px;
     height: 46px;
