@@ -59,7 +59,7 @@ function create_photo_post_type() {
             'public' => true,
             'has_archive' => true,
             'supports' => array('title', 'editor', 'thumbnail'),
-            'rewrite' => array('slug' => 'photos'),
+            'rewrite' => array('slug' => 'photos'), // assurez-vous que le slug est 'photos'
             'taxonomies' => array('category'),
         )
     );
@@ -89,6 +89,7 @@ function create_photo_taxonomies() {
     );
 }
 add_action('init', 'create_photo_taxonomies');
+
 
 // Handler AJAX pour filtrer les photos
 function filter_photos() {
@@ -165,5 +166,4 @@ function load_more_photos() {
 }
 add_action('wp_ajax_load_more', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more', 'load_more_photos');
-
 ?>

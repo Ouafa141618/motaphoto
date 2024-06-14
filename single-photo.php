@@ -2,7 +2,7 @@
 get_header();
 ?>
 
-<section class="photo_detail">
+<section class="detail-photo">
     <div class="post-content">
         <div class="post-description">
             <h2 class="title"><?php the_title(); ?></h2>
@@ -62,7 +62,7 @@ get_header();
         </div>
     </div>
 </section>
-<section class="photo_detail">
+<section class="detail-photo">
     <div class="affichage2photos">
         <h3>VOUS AIMEREZ AUSSI</h3>
         <?php

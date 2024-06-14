@@ -43,12 +43,11 @@ jQuery(document).ready(function($) {
     $('#filter-category, #filter-format, #filter-tri').on('change', function() {
         fetchPhotos();
     });
-
     jQuery(document).ready(function($) {
         $('.detail-photo').on('click', function(event) {
             event.preventDefault();
-            var photoId = $(this).closest('figure').data('photo-id');
-            window.location.href = '/photo/' + photoId;
+            var permalink = $(this).data('permalink');
+            window.location.href = permalink;
         });
     
         $('.openLightbox').on('click', function(event) {
@@ -58,6 +57,10 @@ jQuery(document).ready(function($) {
             // Logique pour afficher l'image dans une lightbox
         });
     });
+    
+    
+    
+    
     
     
     // Gestion du bouton "Charger plus"
