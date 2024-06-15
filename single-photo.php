@@ -2,7 +2,7 @@
 get_header();
 ?>
 
-<section class="detail-photo">
+<section class="photo_detail">
     <div class="post-content">
         <div class="post-description">
             <h2 class="title"><?php the_title(); ?></h2>
@@ -39,7 +39,7 @@ get_header();
                 if (!empty($prev_post)) {
                     $prev_image = get_the_post_thumbnail_url($prev_post->ID);
                     previous_post_link(
-                        '<span class="left"><img src="' . esc_url($prev_image) . '" alt="' . esc_attr($prev_post->post_title) . '" width="75" height="75"/> <a href="' . esc_url(get_permalink($prev_post)) . '" rel="prev"><img src="' . esc_url(get_stylesheet_directory_uri()) . '/assets/images/fleche-gauche.png"></a></span>',
+                        '<span class="left"><img src="' . esc_url($prev_image) . '" alt="' . esc_attr($prev_post->post_title) . '" width="75" height="75"/> <a href="' . esc_url(get_permalink($prev_post)) . '" rel="prev"><img src="' . esc_url(get_stylesheet_directory_uri()) . '/images/fleche-gauche.png"></a></span>',
                         '%title',
                         false
                     );
@@ -52,7 +52,7 @@ get_header();
                 if (!empty($next_post)) {
                     $next_image = get_the_post_thumbnail_url($next_post->ID);
                     next_post_link(
-                        '<span class="right"><img src="' . esc_url($next_image) . '" alt="' . esc_attr($next_post->post_title) . '" width="75" height="75"/> <a href="' . esc_url(get_permalink($next_post)) . '" rel="next"><img src="' . esc_url(get_stylesheet_directory_uri()) . '/assets/images/fleche-droite.png"></a></span>',
+                        '<span class="right"><img src="' . esc_url($next_image) . '" alt="' . esc_attr($next_post->post_title) . '" width="75" height="75"/> <a href="' . esc_url(get_permalink($next_post)) . '" rel="next"><img src="' . esc_url(get_stylesheet_directory_uri()) . '/images/fleche-droite.png"></a></span>',
                         '%title',
                         false
                     );
@@ -62,7 +62,7 @@ get_header();
         </div>
     </div>
 </section>
-<section class="detail-photo">
+<section class="photo_detail">
     <div class="affichage2photos">
         <h3>VOUS AIMEREZ AUSSI</h3>
         <?php

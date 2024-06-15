@@ -1,7 +1,7 @@
 
 /*
 Theme Name: Montheme-mota
-Theme URI: http://localhost/mota/
+Theme URI: http://localhost/motaphoto/
 Author: ouafa BOUNYAR
 Author URI: https://openclassrooms.com
 Description: Thème pour le cours "Photographe freelance Projet 11"
@@ -25,7 +25,7 @@ body {
     font-family: 'Space Mono', monospace;     
     margin: auto; 
     width: 100vw;
-    /* max-width: 1440px; */
+    /*max-width: 1440px; */
 }
 
 
@@ -293,7 +293,7 @@ button {
     justify-content: center;
     border-top: 1px solid black;
     padding-top:10px;
-    width: 1440px;
+    width: 100%;
     height: 40px;
 }
 
@@ -333,6 +333,7 @@ button {
     width: 80%; /* Ajustement pour s'assurer que la largeur n'est pas trop grande */
     height: 769px;
     max-width: 600px;
+    overflow: hidden;
     background-color: #fefefe;
     border-radius: 8px; /* Ajout du border-radius */
 }
@@ -362,7 +363,7 @@ button {
 .wpcf7-form p input,
 .wpcf7-textarea {
     width: 100%;
-    border-radius: 0px;
+    border-radius: 8px;
     border: 1px solid #000000;   }
     .wpcf7-form p input{
         height:40px;
@@ -375,6 +376,9 @@ button {
     padding: 8px 15px 8px; /* Ajustement du padding pour un bouton plus grand */
     border-radius: 8px;
 }
+ .wpcf7-form-control.wpcf7-submit.has-spinner {
+height: 50px;
+border-radius: 0px;}
 
 .form-field {
     font-size: 12px;
@@ -389,14 +393,15 @@ button {
 .titre-contact {
     background-image: url(./images/Contact-header.png);
     background-repeat: repeat;
-    width: 100%;
-    height: 49px;
-    overflow: hidden;
+    background-size: 60%;
+    width: 200%;
+    height: 40px;
+    /*overflow: hidden;*/
     margin-bottom: 10px;
 }
 
 /*------------------------------------------------------- SINGLE-PHOTOS ----------------------------------------------------------------------*/
-.detail-photo {
+.photo_detail {
     width: 100%;
     max-width: 1190px;
     margin: auto;
@@ -723,7 +728,7 @@ button {
     color: black;
     border-radius: 0px;
     border: 1.3px solid #B8BBC2;
-    background: url('/wp-content/themes/montheme-mota/images/chevron.png') no-repeat right 10px center; /* Chemin vers l'image du chevron */
+    background: url('/images/chevron.png') no-repeat right 10px center; /* Chemin vers l'image du chevron */
     background-size: 16px 16px;
 }
 

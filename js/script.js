@@ -43,26 +43,20 @@ jQuery(document).ready(function($) {
     $('#filter-category, #filter-format, #filter-tri').on('change', function() {
         fetchPhotos();
     });
-    jQuery(document).ready(function($) {
-        $('.detail-photo').on('click', function(event) {
-            event.preventDefault();
-            var permalink = $(this).data('permalink');
-            window.location.href = permalink;
-        });
-    
-        $('.openLightbox').on('click', function(event) {
-            event.preventDefault();
-            var imgSrc = $(this).data('src');
-            var imgRef = $(this).data('reference');
-            // Logique pour afficher l'image dans une lightbox
-        });
+
+    $('.detail-photo').on('click', function(event) {
+        event.preventDefault();
+        var permalink = $(this).attr('href');
+        window.location.href = permalink;
     });
-    
-    
-    
-    
-    
-    
+
+    $('.openLightbox').on('click', function(event) {
+        event.preventDefault();
+        var imgSrc = $(this).data('src');
+        var imgRef = $(this).data('reference');
+        // Logique pour afficher l'image dans une lightbox
+    });
+
     // Gestion du bouton "Charger plus"
     var page = 2;
     $('#load-more').on('click', function() {
