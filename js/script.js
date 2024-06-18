@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
     // Gestion de la modal "Contact"
     var modal = $('#myModal');
-    var contactLink = $('#menu-item-89 a');
+    var contactLink = $('#menu-item-38');
     var span = $('.close');
 
     contactLink.click(function(event) {
