@@ -47,6 +47,7 @@ jQuery(document).ready(function($) {
     $('.detail-photo').on('click', function(event) {
         event.preventDefault();
         var permalink = $(this).attr('href');
+        console.log('Lien cliqué : ' + permalink); // Log pour vérifier le lien
         window.location.href = permalink;
     });
 

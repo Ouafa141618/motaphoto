@@ -59,12 +59,53 @@ function create_photo_post_type() {
             'public' => true,
             'has_archive' => true,
             'supports' => array('title', 'editor', 'thumbnail'),
-          'rewrite' => array('slug' => '', 'with_front' => false), // Pas de préfixe
-           // 'taxonomies' => array('category'),
+            'rewrite' => array('slug' => 'photos', 'with_front' => false), // Assurez-vous que le slug est 'photos'
         )
     );
 }
 add_action('init', 'create_photo_post_type');
+// Ajouter une règle de réécriture personnalisée pour inclure la référence dans les permaliens
+function add_custom_rewrite_rules() {
+    add_rewrite_rule(
+        'photos/([^/]+)/?$',
+        'index.php?post_type=photos&reference=$matches[1]',
+        'top'
+    );
+}
+add_action('init', 'add_custom_rewrite_rules');
+
+// Ajouter un paramètre de requête pour gérer la référence
+function add_custom_query_var($vars) {
+    $vars[] = 'reference';
+    return $vars;
+}
+add_filter('query_vars', 'add_custom_query_var');
+
+// Modifier la requête principale pour rechercher par référence
+function modify_main_query($query) {
+    if (!is_admin() && $query->is_main_query() && $query->get('post_type') === 'photos' && $query->get('reference')) {
+        $query->set('meta_query', array(
+            array(
+                'key' => 'reference',
+                'value' => $query->get('reference'),
+                'compare' => '='
+            )
+        ));
+    }
+}
+add_action('pre_get_posts', 'modify_main_query');
+
+// Générer les permaliens en utilisant la référence
+function custom_photo_permalink($permalink, $post) {
+    if ($post->post_type === 'photos') {
+        $reference = get_post_meta($post->ID, 'reference', true);
+        if ($reference) {
+            $permalink = home_url('photos/' . $reference . '/');
+        }
+    }
+    return $permalink;
+}
+add_filter('post_type_link', 'custom_photo_permalink', 10, 2);
 
 // Crée les taxonomies 'categories-photos' et 'formats'
 function create_photo_taxonomies() {
@@ -89,7 +130,6 @@ function create_photo_taxonomies() {
     );
 }
 add_action('init', 'create_photo_taxonomies');
-
 
 // Handler AJAX pour filtrer les photos
 function filter_photos() {

@@ -33,6 +33,21 @@
         <?php include_once 'template-parts/contact.php'; ?>
     </header>
 
+    <div id="modal__burger" class="btn-modal">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+
+    <div id="modal__content" class="modal__content">
+        <?php
+        wp_nav_menu(array(
+            'theme_location' => 'main-menu',
+            'container_class' => 'menu-menu-header1'
+        ));
+        ?>
+    </div>
+
     <?php wp_footer(); ?>
 </body>
 </html>
