@@ -59,7 +59,7 @@ function create_photo_post_type() {
             'public' => true,
             'has_archive' => true,
             'supports' => array('title', 'editor', 'thumbnail'),
-           // 'rewrite' => array('slug' => 'photos'), // assurez-vous que le slug est 'photos'
+          'rewrite' => array('slug' => '', 'with_front' => false), // Pas de préfixe
            // 'taxonomies' => array('category'),
         )
     );

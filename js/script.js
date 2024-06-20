@@ -50,12 +50,35 @@ jQuery(document).ready(function($) {
         window.location.href = permalink;
     });
 
-    $('.openLightbox').on('click', function(event) {
+    // Logic for lightbox
+    const lightbox = $('.lightbox');
+    const lightboxClose = $('.lightbox-close');
+    const lightboxNext = $('.lightbox-next');
+    const lightboxPrev = $('.lightbox-prev');
+    const lightboxContent = $('.lightbox-content img');
+    const lightboxReference = $('.lightbox-reference');
+    const lightboxCategory = $('.lightbox-category');
+
+    function openLightbox(event) {
         event.preventDefault();
-        var imgSrc = $(this).data('src');
-        var imgRef = $(this).data('reference');
-        // Logique pour afficher l'image dans une lightbox
-    });
+        const imgSrc = $(this).data('src');
+        const imgRef = $(this).data('reference');
+        const imgCategory = $(this).data('category');
+
+        lightboxContent.attr('src', imgSrc);
+        lightboxReference.text(imgRef);
+        lightboxCategory.text(imgCategory);
+        lightbox.addClass('lightbox-visible');
+    }
+
+    function closeLightbox() {
+        lightbox.removeClass('lightbox-visible');
+    }
+
+    $('.openLightbox').on('click', openLightbox);
+    lightboxClose.on('click', closeLightbox);
+
+    // Logic for navigating between images in the lightbox can be added here
 
     // Gestion du bouton "Charger plus"
     var page = 2;
@@ -80,4 +103,6 @@ jQuery(document).ready(function($) {
             }
         });
     });
+
+    console.log('Document is ready'); // Vérification initiale
 });
