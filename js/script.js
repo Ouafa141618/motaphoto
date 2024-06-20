@@ -59,12 +59,16 @@ jQuery(document).ready(function($) {
     const lightboxReference = $('.lightbox-reference');
     const lightboxCategory = $('.lightbox-category');
 
+    let currentImageIndex = 0;
+    let images = [];
+
     function openLightbox(event) {
         event.preventDefault();
         const imgSrc = $(this).data('src');
         const imgRef = $(this).data('reference');
         const imgCategory = $(this).data('category');
 
+        currentImageIndex = $(this).index('.openLightbox');
         lightboxContent.attr('src', imgSrc);
         lightboxReference.text(imgRef);
         lightboxCategory.text(imgCategory);
@@ -75,10 +79,36 @@ jQuery(document).ready(function($) {
         lightbox.removeClass('lightbox-visible');
     }
 
+    function showImage(index) {
+        if (index >= 0 && index < images.length) {
+            currentImageIndex = index;
+            const img = images[index];
+            lightboxContent.attr('src', img.src);
+            lightboxReference.text(img.ref);
+            lightboxCategory.text(img.category);
+        }
+    }
+
+    function showNextImage() {
+        showImage((currentImageIndex + 1) % images.length);
+    }
+
+    function showPrevImage() {
+        showImage((currentImageIndex - 1 + images.length) % images.length);
+    }
+
+    $('.openLightbox').each(function() {
+        images.push({
+            src: $(this).data('src'),
+            ref: $(this).data('reference'),
+            category: $(this).data('category')
+        });
+    });
+
     $('.openLightbox').on('click', openLightbox);
     lightboxClose.on('click', closeLightbox);
-
-    // Logic for navigating between images in the lightbox can be added here
+    lightboxNext.on('click', showNextImage);
+    lightboxPrev.on('click', showPrevImage);
 
     // Gestion du bouton "Charger plus"
     var page = 2;
