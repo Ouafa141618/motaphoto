@@ -21,7 +21,7 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/images/Logo.png" alt="Logo <?php echo bloginfo('name'); ?>">
             </a>
 
-            <nav role="navigation" aria-label="<?php _e('Menu principal', 'text-domain'); ?>" id="nav" class="active open">
+            <nav role="navigation" aria-label="<?php _e('Menu principal', 'text-domain'); ?>" id="nav">
                 <?php
                 wp_nav_menu([
                     'theme_location' => 'main-menu',
@@ -43,7 +43,7 @@
         <?php
         wp_nav_menu(array(
             'theme_location' => 'main-menu',
-            'container_class' => 'menu-menu-header1'
+            'container_class' => 'menu-header-menu-container'
         ));
         ?>
     </div>

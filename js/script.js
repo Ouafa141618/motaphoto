@@ -111,6 +111,28 @@ jQuery(document).ready(function($) {
     lightboxNext.on('click', showNextImage);
     lightboxPrev.on('click', showPrevImage);
 
+//menu hamburger 
+document.addEventListener('DOMContentLoaded', function() {
+    const burgerButton = document.getElementById('modal__burger');
+    const modalContent = document.getElementById('modal__content');
+    const nav = document.getElementById('nav');
+
+    burgerButton.addEventListener('click', function() {
+        burgerButton.classList.toggle('close');
+        modalContent.classList.toggle('animate-modal');
+        nav.classList.toggle('hide'); // Hide the main menu when the hamburger menu is open
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!burgerButton.contains(event.target) && !modalContent.contains(event.target)) {
+            burgerButton.classList.remove('close');
+            modalContent.classList.remove('animate-modal');
+            nav.classList.remove('hide'); // Show the main menu when the hamburger menu is closed
+        }
+    });
+});
+
+
     // Gestion du bouton "Charger plus"
     var page = 2;
     $('#load-more').on('click', function() {
