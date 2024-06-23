@@ -1,4 +1,3 @@
-
 /*
 Theme Name: Montheme-mota
 Theme URI: http://localhost/motaphoto/
@@ -10,30 +9,17 @@ Tags: openclassrooms, cookinfamily, cours
 Text Domain: montheme-mota
 */
 
-/* {box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
-    max-width: 1440px;
-}
-*/
-
 body {
     background: #FFFFFF; 
     color: #23282d; 
     font-family: 'Space Mono';     
     margin: auto; 
     width: 100vw;
-    /*max-width: 1440px; */
 }
-
 
 .admin-bar .menu {
     top: 32px; /* on prend en compte le décalage */
 }
-
-
 
 /*---------------------------------------------------- HEADER -------------------------------------------------------------------------------*/
 
@@ -63,7 +49,6 @@ header {
     margin: 40px;
 }
 
-
 nav ul {
     display: flex;
     flex-direction: row;
@@ -73,13 +58,13 @@ nav ul {
     list-style: none; /* Enlève les puces de liste */
     text-decoration: none; /* Enlève l'effet souligné */
 }
-#menu-menu-header a{
+#menu-menu-header a {
     font-size: 16px;
     color: black;
     text-decoration: none; /* Enlève l'effet souligné */
     list-style: none; /* Enlève les puces de liste */
-   text-transform: uppercase;
-   font-weight: 400;
+    text-transform: uppercase;
+    font-weight: 400;
 }
 header a {
     text-decoration: none; /* Enlève l'effet souligné */
@@ -87,11 +72,10 @@ header a {
     font-weight: 400;
     font-family: 'Poppins';
     font-size: 16px;
-
 }
 header a:hover {
-    font-weight:bold;
-    color:black;
+    font-weight: bold;
+    color: black;
     text-decoration: none; /* Enlève l'effet souligné */
 }
 
@@ -115,31 +99,31 @@ footer {
     margin-right: 40px;    
 }
 
-
-
-/* BOUTON PAGE SINGLE-PHOTO*/
+/* BOUTON PAGE SINGLE-PHOTO */
 
 button {
     border: none;
+    font-family: 'Space Mono';
     width: 272px;
     height: 50px;
- }
-
-.btn a {font-size: 12px;
 }
 
-.btn a:hover{
+.btn a {
+    font-size: 12px;
+}
+
+.btn a:hover {
     background: #000;
-    color:white;
+    color: white;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-#contact_btn:hover{
-    color:#fefefe;
+#contact_btn:hover {
+    color: #fefefe;
 }
 
 .btn-all-photos {
-    display:flex;
+    display: flex;
     justify-content: center;
 }
 
@@ -147,84 +131,156 @@ button {
     justify-content: center;
     margin-top: 40px;
     margin-bottom: 40px;
-    
 }
 
 #all-photos a {
-    color:black;
+    color: black;
 }
 
 #all-photos:hover {
-    background-color:black;
-    color:white;
-
+    background-color: black;
+    color: white;
 }
 
-#all-photos a:hover{
-    color:white;
+#all-photos a:hover {
+    color: white;
 }
-/**************************************MENU HAMBURGER MOBILE *********************************************************************/
+
+/************************************** MENU HAMBURGER MOBILE *********************************************************************/
 
 
 .btn-modal {
-    opacity: 1;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    background-color: transparent;
-    gap: 8px;
-    top: -100px;
-    width: 28px;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    right: 3em;
-    cursor: pointer;  
-  }
+    display: none; /* Masqué par défaut */
+}
 
-  .btn-modal .line {
+@media (max-width: 768px) {
+    .btn-modal {
+        display: flex;
+        opacity: 1;
+        position: absolute;
+        flex-direction: column;
+        align-content: center;
+        margin-top: 70px;
+        justify-content: center;
+        background-color: transparent;
+        gap: 8px;
+        top: 1em;
+        right: 1em;
+        width: 28px;
+        cursor: pointer;
+        z-index: 2001;
+    }
+
+    .btn-modal .line {
+        height: 1.7px;
+        background-color: #000;
+        display: block;
+        width: 100%;
+        margin: 0;
+        transition: all .3s ease-in-out;
+    }
+
+    .btn-modal.close .line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .btn-modal.close .line:first-child {
+        transform: rotate(45deg) translate3d(8px, 6px, 0);
+    }
+
+    .btn-modal.close .line:last-child {
+        transform: rotate(-45deg) translate3d(8px, -6px, 0);
+    }
+
+    #nav {
+        display: none; /* Masque le menu principal */
+    }
+
+    .modal__content {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #E00000;
+        visibility: hidden;
+        transform: translateX(-100%);
+        transition: visibility 0s, transform 0.3s ease-in-out;
+        z-index: 2000;
+        overflow-y: auto;
+        padding-top: 115px;
+    }
+
+    .modal__content.animate-modal {
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    .menu-header-menu-container {
+        margin: auto;
+        width: 100vw;
+    }
+
+    .menu-header-menu-container ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 35px 20px 25px;
+    }
+
+    .menu-header-menu-container li {
+        margin: 20px 0;
+    }
+
+    .menu-header-menu-container a {
+        color: white;
+        font-size: 23px;
+        text-decoration: none;
+    }
+}
+
+.btn-modal .line {
     opacity: 1;
-    /* opacity: 0; */
     height: 1.7px;
     background-color: #000;
     display: block;
     width: 100%;
     margin: 0;
     transition: all .3s ease-in-out;
-  }
-  /* Création du bouton pour fermer */
-  .btn-modal.close {
-    z-index:2000;
+}
+
+.btn-modal.close {
+    z-index: 2000;
     top: 1em;
     right: 1em;
-  }
+}
 
 #modal__burger:hover .line:nth-child(2),
 .btn-modal.close .line:nth-child(2) {
     opacity: 0;
-  }
+}
 
 .btn-modal.close .line:first-child {
     transform: rotate(45deg) translate3d(8px, 6px, 0);
-  }
+}
 
-.btn-modal.close  span.line:last-child {
+.btn-modal.close .line:last-child {
     transform: rotate(-45deg) translate3d(8px, -6px, 0);
-  }
-  .modal__content {
+}
+
+.modal__content {
     position: fixed;
     left: 0;
-    top:117px;
+    top: 117px;
     opacity: 1;
     width: 100vw;
     height: 100vh;
     background: #E00000; 
-    visibility: visible;
+    visibility: hidden;
     transition: visibility 0s, opacity 0.3s linear;
     transform: translateX(-100%);
-    z-index:1000;
+    z-index: 1000;
     overflow-y: auto;
 }
 
@@ -239,7 +295,6 @@ button {
     display: flex;  
     justify-content: center;
     text-align: center;    
-    /* align-items: center */
 }
 
 #modal__content .menu-header-menu-container ul {    
@@ -262,43 +317,38 @@ button {
     opacity: 1;
     transition: transform 0.3s, ease-in-out, visibility 0s, opacity 0.3s linear;
     transform: translateX(0);
-    
 }
 
-/* Pour faire apparaitre la moadle en descendant et avec agmentatation de l'opacité */
 @keyframes move-down {
     0% {
-      transform: translateY(-400px);
-      opacity: 0;
+        transform: translateY(-400px);
+        opacity: 0;
     }  
     100% {
-      transform: translateY(0);
-      visibility: visible;
+        transform: translateY(0);
+        visibility: visible;
     }
-  }
-
-
+}
 
 /*---------------------------------------------------- FOOTER ------------------------------------------------------------------------*/
 
-
 #menu-menu-footer {
-
-    display:flex;
-    gap:60px;
+    display: flex;
+    gap: 60px;
 }
+
 .footer {
-    display:flex;
+    display: flex;
     gap: 74px;
     justify-content: center;
     border-top: 1px solid black;
-    padding-top:10px;
+    padding-top: 10px;
     width: 100%;
     height: 40px;
 }
 
 .footer-nav a {
-    color:black;
+    color: black;
     text-decoration: none;
     font-weight: 400;
 }
@@ -308,10 +358,11 @@ button {
 }
 
 .footer-nav {
-    display:flex;
+    display: flex;
 }
+
 /*------------------------------------------------------- MODALE CONTACT----------------------------------------------------------------------*/
-/* Styles pour la modal */
+
 .modal {
     display: none; /* Cette propriété est correcte, la modale est masquée par défaut */
     position: fixed;
@@ -324,7 +375,6 @@ button {
     background-color: rgba(0,0,0,0.4);
 }
 
-/* Styles pour le contenu de la modal */
 .modal-content {
     position: relative;
     margin: 15% auto;
@@ -337,14 +387,16 @@ button {
     background-color: #fefefe;
     border-radius: 8px; /* Ajout du border-radius */
 }
-.modal-body {    display: flex;
+
+.modal-body {
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 5px 0 70px;
     max-width: 265px;
     margin: auto;
 }
-/* Styles pour le bouton de fermeture */
+
 .close {
     color: #aaa;
     float: right;
@@ -359,15 +411,17 @@ button {
     cursor: pointer;
 }
 
-/* Styles pour les éléments de formulaire */
 .wpcf7-form p input,
 .wpcf7-textarea {
     width: 100%;
     border-radius: 8px;
-    border: 1px solid #000000;   }
-    .wpcf7-form p input{
-        height:40px;
-    }
+    border: 1px solid #000000;
+}
+
+.wpcf7-form p input {
+    height: 40px;
+}
+
 .wpcf7-submit {
     font-family: 'Space Mono', monospace;
     font-size: 14px;
@@ -376,9 +430,11 @@ button {
     padding: 8px 15px 8px; /* Ajustement du padding pour un bouton plus grand */
     border-radius: 8px;
 }
- .wpcf7-form-control.wpcf7-submit.has-spinner {
-height: 50px;
-border-radius: 0px;}
+
+.wpcf7-form-control.wpcf7-submit.has-spinner {
+    height: 50px;
+    border-radius: 0px;
+}
 
 .form-field {
     font-size: 12px;
@@ -389,18 +445,17 @@ border-radius: 0px;}
     margin-bottom: 10px; /* Ajout de marges pour espacer les champs */
 }
 
-/* Styles pour le titre de contact */
 .titre-contact {
     background-image: url(./images/Contact-header.png);
     background-repeat: repeat;
     background-size: 60%;
     width: 200%;
     height: 40px;
-    /*overflow: hidden;*/
     margin-bottom: 10px;
 }
 
 /*------------------------------------------------------- SINGLE-PHOTOS ----------------------------------------------------------------------*/
+
 .photo_detail {
     width: 100%;
     max-width: 1190px;
@@ -475,7 +530,7 @@ border-radius: 0px;}
 
 .photo__contact {
     display: flex;
-    font-family:'Poppins';
+    font-family: 'Poppins';
     flex-direction: row;
     padding: 20px 0px 10px;
     justify-content: space-between;
@@ -501,6 +556,7 @@ border-radius: 0px;}
 }
 
 /*------------------------------------------------------- BLOCK PHOTOS APPARENTES----------------------------------------------------------------------*/
+
 .photo_aleatoire {
     display: flex;
     justify-content: center;
@@ -532,6 +588,7 @@ border-radius: 0px;}
 }
 
 /*------------------------------------------------- PHOTO BLOCK (gallerie d'images)--------------------------------------------*/
+
 .contain-photos {
     max-width: 1200px;
     margin: 0 auto;
@@ -599,7 +656,7 @@ border-radius: 0px;}
     background: url("./images/Icon_eye.png") center center / 100% 100% !important;
     background-repeat: no-repeat;
     width: 46px;
-    height: 46px;
+    height: 31.2px;
     transform: translate3d(-50%, -50%, 0);
     opacity: 0;
     transition: all 1s ease-in-out;
@@ -661,9 +718,11 @@ border-radius: 0px;}
 .btn:hover {
     background-color: #000;
     font-weight: 700;
+    color: #FFFFFF;
 }
 
-/*****************************FILTRE et tri (filtre.php)************************/
+/***************************** FILTRE et tri (filtre.php) ************************/
+
 .filters {
     display: flex;
     flex-wrap: nowrap;
@@ -715,7 +774,7 @@ border-radius: 0px;}
 }
 
 .filters .filter select {
-    appearance: none; /* Supprime le style par défaut de la flèche */
+   /* appearance: none;  Supprime le style par défaut de la flèche */
     -webkit-appearance: none; /* Pour Safari */
     -moz-appearance: none; /* Pour Firefox */
     height: 43px;
@@ -729,7 +788,7 @@ border-radius: 0px;}
     color: black;
     border-radius: 0px;
     border: 1.3px solid #B8BBC2;
-    background: url('/images/chevron.png') no-repeat right 10px center; /* Chemin vers l'image du chevron */
+    background: url('./images/icone-filtre.png') no-repeat right 10px center; /* Chemin vers l'image du chevron */
     background-size: 16px 16px;
 }
 
@@ -740,7 +799,17 @@ border-radius: 0px;}
     margin-bottom: 8px; /* Espace entre le label et le champ */
 }
 
-/************************HERO BANNER (banner.php)*****************************************************/
+.filters .filter select option {
+    background-color: white; /* Couleur de fond par défaut */
+    color: black; /* Couleur du texte par défaut */
+}
+
+.filters .filter select option:hover {
+    background-color: #E00000; /* Couleur de fond rouge */
+    color: white; /* Couleur du texte en blanc pour le contraste */
+}
+
+/************************ HERO BANNER (banner.php) *****************************/
 
 /* Styles pour le titre de la bannière */
 .title-hero {
@@ -819,7 +888,7 @@ border-radius: 0px;}
     transform: translate3d(-50%, -50%, 0);
 }
 
-/************************************ LIGHTBOX*******************************/
+/************************************ LIGHTBOX *******************************/
 
 .lightbox {
     display: none;
@@ -1038,7 +1107,7 @@ border-radius: 0px;}
         line-height: 18px;
     }
 
-    /*FOOTER*/
+    /* FOOTER */
     .footer {
         width: 768px;
         padding-top: 50px;
@@ -1066,7 +1135,7 @@ border-radius: 0px;}
         margin-bottom: 20px;
     }
 
-    /*FILTRE*/
+    /* FILTRE */
     .filters {
         align-items: center;
         margin-bottom: 20px;
@@ -1076,6 +1145,10 @@ border-radius: 0px;}
         width: 100%;
         margin-left: 0;
         margin-bottom: 10px;
+    }
+
+    .filters-container {
+        width: 100%;
     }
 
     .filters .filter-category,

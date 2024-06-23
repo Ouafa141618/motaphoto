@@ -61,7 +61,9 @@ get_header();
     <!-------------------- SECTION DU MILIEU ------------------->
     <div class="photo__contact">
         <p>Cette photo vous intéresse-t-elle?</p>
-        <button class="btn" type="button" id="contact_btn" data-reference="<?php echo esc_attr(get_post_meta(get_the_ID(), 'reference', true)); ?>">Contact</button>
+        <button class="btn" type="button" id="single_contact_btn" data-reference="<?php echo esc_attr(get_post_meta(get_the_ID(), 'reference', true)); ?>">Contact</button>
+
+
 
         <!-------------------- PHOTOS APPARENTES ------------------->
 

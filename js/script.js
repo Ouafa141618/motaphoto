@@ -1,23 +1,33 @@
 jQuery(document).ready(function($) {
     // Gestion de la modal "Contact"
     var modal = $('#myModal');
-    var contactLink = $('#menu-item-38');
+    var menuContactLink = $('#menu-item-38 a');
+    var pageContactButton = $('#single_contact_btn');
     var span = $('.close');
 
-    contactLink.click(function(event) {
+    // Ouvrir la modal depuis le menu
+    menuContactLink.on('click', function(event) {
         event.preventDefault(); // Empêcher le comportement par défaut du lien
         modal.fadeIn(); // Afficher la modal
     });
 
-    span.click(function() {
+    // Ouvrir la modal depuis le bouton de contact sur la page individuelle
+    pageContactButton.on('click', function(event) {
+        event.preventDefault(); // Empêcher le comportement par défaut du lien
+        modal.fadeIn(); // Afficher la modal
+    });
+
+    span.on('click', function() {
         modal.fadeOut(); // Cacher la modal
     });
 
-    $(window).click(function(event) {
+    $(window).on('click', function(event) {
         if ($(event.target).is(modal)) {
             modal.fadeOut(); // Cacher la modal
         }
     });
+
+    
 
     // Fonction pour récupérer les photos avec les filtres
     function fetchPhotos() {
@@ -50,6 +60,26 @@ jQuery(document).ready(function($) {
         console.log('Lien cliqué : ' + permalink); // Log pour vérifier le lien
         window.location.href = permalink;
     });
+// HOVER du filtre 
+document.addEventListener('DOMContentLoaded', function() {
+    const selectElements = document.querySelectorAll('.filters .filter select');
+
+    selectElements.forEach(select => {
+        select.addEventListener('mouseover', function(event) {
+            const options = select.options;
+            for (let i = 0; i < options.length; i++) {
+                options[i].addEventListener('mouseover', function() {
+                    options[i].style.backgroundColor = '#E00000';
+                    options[i].style.color = 'white';
+                });
+                options[i].addEventListener('mouseout', function() {
+                    options[i].style.backgroundColor = '';
+                    options[i].style.color = '';
+                });
+            }
+        });
+    });
+});
 
     // Logic for lightbox
     const lightbox = $('.lightbox');
@@ -111,26 +141,39 @@ jQuery(document).ready(function($) {
     lightboxNext.on('click', showNextImage);
     lightboxPrev.on('click', showPrevImage);
 
-//menu hamburger 
+//menu burger 
 document.addEventListener('DOMContentLoaded', function() {
-    const burgerButton = document.getElementById('modal__burger');
-    const modalContent = document.getElementById('modal__content');
-    const nav = document.getElementById('nav');
+    const burgerButton = document.querySelector('#modal__burger');
+    const modalContent = document.querySelector('#modal__content');
+    const closeButton = document.querySelector('#close__modal img');
+    const links = document.querySelectorAll('#modal__content a');
 
-    burgerButton.addEventListener('click', function() {
-        burgerButton.classList.toggle('close');
-        modalContent.classList.toggle('animate-modal');
-        nav.classList.toggle('hide'); // Hide the main menu when the hamburger menu is open
-    });
+    if (burgerButton && modalContent) {
+        burgerButton.addEventListener('click', function() {
+            console.log('Burger button clicked');
+            modalContent.classList.toggle('animate-modal');
+            burgerButton.classList.toggle('close');
+        });
 
-    document.addEventListener('click', function(event) {
-        if (!burgerButton.contains(event.target) && !modalContent.contains(event.target)) {
-            burgerButton.classList.remove('close');
-            modalContent.classList.remove('animate-modal');
-            nav.classList.remove('hide'); // Show the main menu when the hamburger menu is closed
+        if (closeButton) {
+            closeButton.addEventListener('click', function() {
+                console.log('Close button clicked');
+                modalContent.classList.remove('animate-modal');
+                burgerButton.classList.remove('close');
+            });
         }
-    });
+
+        links.forEach((link) => {
+            link.addEventListener('click', function() {
+                console.log('Menu link clicked');
+                modalContent.classList.remove('animate-modal');
+                burgerButton.classList.remove('close');
+            });
+        });
+    }
 });
+
+
 
 
     // Gestion du bouton "Charger plus"
