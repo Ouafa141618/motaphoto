@@ -1,3 +1,4 @@
+
 jQuery(document).ready(function($) {
     // Gestion de la modal "Contact"
     var modal = $('#myModal');
@@ -14,6 +15,8 @@ jQuery(document).ready(function($) {
     // Ouvrir la modal depuis le bouton de contact sur la page individuelle
     pageContactButton.on('click', function(event) {
         event.preventDefault(); // Empêcher le comportement par défaut du lien
+        var photoReference = $(this).data('reference'); // Récupérer la référence de la photo
+        $('#myModal').find('input[name="your-photo-ref"]').val(photoReference); // Insérer la référence dans le champ du formulaire
         modal.fadeIn(); // Afficher la modal
     });
 
@@ -26,8 +29,6 @@ jQuery(document).ready(function($) {
             modal.fadeOut(); // Cacher la modal
         }
     });
-
-    
 
     // Fonction pour récupérer les photos avec les filtres
     function fetchPhotos() {
@@ -57,29 +58,8 @@ jQuery(document).ready(function($) {
     $('.detail-photo').on('click', function(event) {
         event.preventDefault();
         var permalink = $(this).attr('href');
-        console.log('Lien cliqué : ' + permalink); // Log pour vérifier le lien
         window.location.href = permalink;
     });
-// HOVER du filtre 
-document.addEventListener('DOMContentLoaded', function() {
-    const selectElements = document.querySelectorAll('.filters .filter select');
-
-    selectElements.forEach(select => {
-        select.addEventListener('mouseover', function(event) {
-            const options = select.options;
-            for (let i = 0; i < options.length; i++) {
-                options[i].addEventListener('mouseover', function() {
-                    options[i].style.backgroundColor = '#E00000';
-                    options[i].style.color = 'white';
-                });
-                options[i].addEventListener('mouseout', function() {
-                    options[i].style.backgroundColor = '';
-                    options[i].style.color = '';
-                });
-            }
-        });
-    });
-});
 
     // Logic for lightbox
     const lightbox = $('.lightbox');
@@ -141,41 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
     lightboxNext.on('click', showNextImage);
     lightboxPrev.on('click', showPrevImage);
 
-//menu burger 
-document.addEventListener('DOMContentLoaded', function() {
-    const burgerButton = document.querySelector('#modal__burger');
-    const modalContent = document.querySelector('#modal__content');
-    const closeButton = document.querySelector('#close__modal img');
-    const links = document.querySelectorAll('#modal__content a');
-
-    if (burgerButton && modalContent) {
-        burgerButton.addEventListener('click', function() {
-            console.log('Burger button clicked');
-            modalContent.classList.toggle('animate-modal');
-            burgerButton.classList.toggle('close');
-        });
-
-        if (closeButton) {
-            closeButton.addEventListener('click', function() {
-                console.log('Close button clicked');
-                modalContent.classList.remove('animate-modal');
-                burgerButton.classList.remove('close');
-            });
-        }
-
-        links.forEach((link) => {
-            link.addEventListener('click', function() {
-                console.log('Menu link clicked');
-                modalContent.classList.remove('animate-modal');
-                burgerButton.classList.remove('close');
-            });
-        });
-    }
-});
-
-
-
-
     // Gestion du bouton "Charger plus"
     var page = 2;
     $('#load-more').on('click', function() {
@@ -201,4 +146,52 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     console.log('Document is ready'); // Vérification initiale
+});
+
+    
+jQuery(document).ready(function($) {
+    function updateThumbnails() {
+        var prevArrow = $('.photo_avant .nav-arrow');
+        var nextArrow = $('.photo_apres .nav-arrow');
+
+        if (prevArrow.length) {
+            var prevThumbnail = $('.prev-thumbnail img');
+            prevThumbnail.attr('src', prevArrow.data('image'));
+            prevThumbnail.attr('alt', prevArrow.data('title'));
+        }
+
+        if (nextArrow.length) {
+            var nextThumbnail = $('.next-thumbnail img');
+            nextThumbnail.attr('src', nextArrow.data('image'));
+            nextThumbnail.attr('alt', nextArrow.data('title'));
+        }
+    }
+
+    // Initial thumbnail update
+    updateThumbnails();
+
+    // Infinite loop handling
+    $('.photo_avant .nav-arrow').on('click', function(event) {
+        event.preventDefault();
+        var link = $(this).parent('a').attr('href');
+        window.location.href = link;
+    });
+
+    $('.photo_apres .nav-arrow').on('click', function(event) {
+        event.preventDefault();
+        var link = $(this).parent('a').attr('href');
+        window.location.href = link;
+    });
+
+    $('.photo_avant').hover(function() {
+        $(this).find('.prev-thumbnail').show();
+    }, function() {
+        $(this).find('.prev-thumbnail').hide();
+    });
+
+    $('.photo_apres').hover(function() {
+        $(this).find('.next-thumbnail').show();
+    }, function() {
+        $(this).find('.next-thumbnail').hide();
+    });
 });

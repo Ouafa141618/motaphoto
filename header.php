@@ -25,14 +25,14 @@
                 ]);
                 ?>
             </nav>
+            <div id="modal__burger" class="btn-modal">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
         </div>
         <?php include_once 'template-parts/contact.php'; ?>
     </header>
-    <div id="modal__burger" class="btn-modal">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-    </div>
     <div id="modal__content" class="modal__content">
         <div id="close__modal" class="btn-close">
             <img src="<?php echo get_template_directory_uri(); ?>/images/close-lightbox.png" alt="Close">

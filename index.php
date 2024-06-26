@@ -68,40 +68,32 @@ get_header();
         <!-------------------- PHOTOS APPARENTES ------------------->
 
         <div class="photo_choix">
-            <div class="photo_avant">
-                <?php
-                $prev_post = get_previous_post();
-                $next_post = get_next_post();
-
-                if (!empty($prev_post)) {
-                    $prev_image = get_the_post_thumbnail_url($prev_post->ID);
-                    previous_post_link(
-                        '<span class="left"><img src="' .
-                            $prev_image . '" alt="' . $prev_post->post_title . '" 
-                            width="75" height="75"/> <a href="' . get_permalink($prev_post) . '" 
-                            rel="prev"><img src="' . get_stylesheet_directory_uri() . '/images/fleche-gauche.png"></a></span>',
-                        '%title',
-                        false
-                    );
-                }
-                ?>
-            </div>
-            <div class="photo_apres">
-                <?php
-                if (!empty($next_post)) {
-                    $next_image = get_the_post_thumbnail_url($next_post->ID);
-                    next_post_link(
-                        '<span class="right"><img src="' .
-                            $next_image . '" alt="' . $next_post->post_title . '" 
-                            width="75" height="75"/> <a href="' . get_permalink($next_post) . '" 
-                            rel="next"><img src="' . get_stylesheet_directory_uri() . '/images/fleche-droite.png"></a></span>',
-                        '%title',
-                        false
-                    );
-                }
-                ?>
-            </div>
+    <div class="photo_avant">
+        <?php
+        $prev_post = get_previous_post();
+        if (!empty($prev_post)) {
+            $prev_image = get_the_post_thumbnail_url($prev_post->ID);
+            echo '<span class="left"><a href="' . get_permalink($prev_post) . '" rel="prev"><img src="' . get_stylesheet_directory_uri() . '/images/fleche-gauche.png" class="nav-arrow" data-image="' . $prev_image . '" data-title="' . esc_attr($prev_post->post_title) . '"></a></span>';
+        }
+        ?>
+        <div class="prev-thumbnail" style="display: none;">
+            <img src="" alt="" width="75" height="75"/>
         </div>
+    </div>
+    <div class="photo_apres">
+        <?php
+        $next_post = get_next_post();
+        if (!empty($next_post)) {
+            $next_image = get_the_post_thumbnail_url($next_post->ID);
+            echo '<span class="right"><a href="' . get_permalink($next_post) . '" rel="next"><img src="' . get_stylesheet_directory_uri() . '/images/fleche-droite.png" class="nav-arrow" data-image="' . $next_image . '" data-title="' . esc_attr($next_post->post_title) . '"></a></span>';
+        }
+        ?>
+        <div class="next-thumbnail" style="display: none;">
+            <img src="" alt="" width="75" height="75"/>
+           </div>
+          </div>
+     </div>
+
     </div>
 
 </section>

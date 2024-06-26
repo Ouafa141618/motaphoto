@@ -538,9 +538,28 @@ button {
     border-bottom: 1px solid #000;
 }
 
+
 .photo_choix {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-arrow {
+    cursor: pointer;
+}
+
+.prev-thumbnail,
+.next-thumbnail {
+    position: absolute;
+    bottom: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.photo_avant:hover .prev-thumbnail,
+.photo_apres:hover .next-thumbnail {
+    opacity: 1;
 }
 
 .photo_avant img, .photo_apres img {
@@ -774,7 +793,7 @@ button {
 }
 
 .filters .filter select {
-   /* appearance: none;  Supprime le style par défaut de la flèche */
+   appearance: none;  /*Supprime le style par défaut de la flèche */
     -webkit-appearance: none; /* Pour Safari */
     -moz-appearance: none; /* Pour Firefox */
     height: 43px;
@@ -804,7 +823,7 @@ button {
     color: black; /* Couleur du texte par défaut */
 }
 
-.filters .filter select option:hover {
+.filters .filter select:hover {
     background-color: #E00000; /* Couleur de fond rouge */
     color: white; /* Couleur du texte en blanc pour le contraste */
 }
