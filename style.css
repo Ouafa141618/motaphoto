@@ -453,7 +453,6 @@ button {
     height: 40px;
     margin-bottom: 10px;
 }
-
 /*------------------------------------------------------- SINGLE-PHOTOS ----------------------------------------------------------------------*/
 
 .photo_detail {
@@ -538,11 +537,11 @@ button {
     border-bottom: 1px solid #000;
 }
 
-
 .photo_choix {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .nav-arrow {
@@ -551,15 +550,17 @@ button {
 
 .prev-thumbnail,
 .next-thumbnail {
+    display: none;
     position: absolute;
     bottom: 100%;
-    opacity: 0;
+    left: 50%;
+    transform: translateX(-50%);
     transition: opacity 0.3s;
 }
 
 .photo_avant:hover .prev-thumbnail,
 .photo_apres:hover .next-thumbnail {
-    opacity: 1;
+    display: block;
 }
 
 .photo_avant img, .photo_apres img {
@@ -1072,6 +1073,7 @@ button {
         flex-wrap: wrap;
         padding: 0 15px;
         gap: 15px;
+        margin-top: 1200px;
     }
 
     .gallery .photo1 {
@@ -1173,7 +1175,7 @@ button {
     .filters .filter-category,
     .filters .filter-format,
     .filters .filter-tri {
-        width: 120px;
+        width: 120px !important;
         margin: 0 auto;
     }
 

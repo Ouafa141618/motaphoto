@@ -1,4 +1,3 @@
-
 jQuery(document).ready(function($) {
     // Gestion de la modal "Contact"
     var modal = $('#myModal');
@@ -120,6 +119,16 @@ jQuery(document).ready(function($) {
     lightboxClose.on('click', closeLightbox);
     lightboxNext.on('click', showNextImage);
     lightboxPrev.on('click', showPrevImage);
+
+    // Afficher les miniatures au survol des flèches
+    $('.nav-arrow').hover(function() {
+        var thumbnail = $(this).closest('div').find('.prev-thumbnail, .next-thumbnail img');
+        thumbnail.attr('src', $(this).data('image'));
+        thumbnail.attr('alt', $(this).data('title'));
+        $(this).closest('div').find('.prev-thumbnail, .next-thumbnail').show();
+    }, function() {
+        $(this).closest('div').find('.prev-thumbnail, .next-thumbnail').hide();
+    });
 
     // Gestion du bouton "Charger plus"
     var page = 2;

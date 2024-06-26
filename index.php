@@ -66,7 +66,6 @@ get_header();
 
 
         <!-------------------- PHOTOS APPARENTES ------------------->
-
         <div class="photo_choix">
     <div class="photo_avant">
         <?php
@@ -90,9 +89,10 @@ get_header();
         ?>
         <div class="next-thumbnail" style="display: none;">
             <img src="" alt="" width="75" height="75"/>
-           </div>
-          </div>
-     </div>
+        </div>
+    </div>
+    </div>
+
 
     </div>
 
