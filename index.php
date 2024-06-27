@@ -1,6 +1,5 @@
 <?php
 
-
 get_header();
 
 ?>
@@ -21,7 +20,6 @@ get_header();
                     <!-- ACF  -->
                 </p>
                 <p>
-
                     CATEGORIE: <?php echo the_terms(get_the_ID(), 'categories-photos', false); ?>
                     <!-- CPT UI -->
                 </p>
@@ -29,19 +27,15 @@ get_header();
                     TYPE: <?php echo get_post_meta(get_the_ID(), 'type', true); ?>
                 </p>
                 <p>
-
                     FORMAT: <?php echo the_terms(get_the_ID(), 'formats', false); ?>
                 </p>
-
                 <p>
-
                     ANNEE: <?php echo get_the_date(); ?>
                 </p>
             </div>
         </div>
 
         <!-------------------------------- Colonne droite/Photos ----------------------------------------->
-    
         <div class="post-image ">
             <?php if (has_post_thumbnail()) : ?>
                 <figure class="photo1 brightness">
@@ -63,39 +57,50 @@ get_header();
         <p>Cette photo vous intéresse-t-elle?</p>
         <button class="btn" type="button" id="single_contact_btn" data-reference="<?php echo esc_attr(get_post_meta(get_the_ID(), 'reference', true)); ?>">Contact</button>
 
-
-
         <!-------------------- PHOTOS APPARENTES ------------------->
         <div class="photo_choix">
-    <div class="photo_avant">
-        <?php
-        $prev_post = get_previous_post();
-        if (!empty($prev_post)) {
-            $prev_image = get_the_post_thumbnail_url($prev_post->ID);
-            echo '<span class="left"><a href="' . get_permalink($prev_post) . '" rel="prev"><img src="' . get_stylesheet_directory_uri() . '/images/fleche-gauche.png" class="nav-arrow" data-image="' . $prev_image . '" data-title="' . esc_attr($prev_post->post_title) . '"></a></span>';
-        }
-        ?>
-        <div class="prev-thumbnail" style="display: none;">
-            <img src="" alt="" width="75" height="75"/>
+            <div class="photo_avant">
+                <?php
+                $prev_post = get_previous_post();
+                if (empty($prev_post)) {
+                    // Récupérez le dernier post pour la boucle infinie
+                    $prev_post = get_posts(array(
+                        'post_type' => 'photos',
+                        'posts_per_page' => 1,
+                        'orderby' => 'date',
+                        'order' => 'DESC'
+                    ));
+                    $prev_post = $prev_post[0];
+                }
+                $prev_image = get_the_post_thumbnail_url($prev_post->ID);
+                echo '<span class="left"><a href="' . get_permalink($prev_post) . '" rel="prev"><img src="' . get_stylesheet_directory_uri() . '/images/fleche-gauche.png" class="nav-arrow" data-image="' . $prev_image . '" data-title="' . esc_attr($prev_post->post_title) . '"></a></span>';
+                ?>
+                <div class="prev-thumbnail" style="display: none;">
+                    <img src="" alt="" width="75" height="75"/>
+                </div>
+            </div>
+            <div class="photo_apres">
+                <?php
+                $next_post = get_next_post();
+                if (empty($next_post)) {
+                    // Récupérez le premier post pour la boucle infinie
+                    $next_post = get_posts(array(
+                        'post_type' => 'photos',
+                        'posts_per_page' => 1,
+                        'orderby' => 'date',
+                        'order' => 'ASC'
+                    ));
+                    $next_post = $next_post[0];
+                }
+                $next_image = get_the_post_thumbnail_url($next_post->ID);
+                echo '<span class="right"><a href="' . get_permalink($next_post) . '" rel="next"><img src="' . get_stylesheet_directory_uri() . '/images/fleche-droite.png" class="nav-arrow" data-image="' . $next_image . '" data-title="' . esc_attr($next_post->post_title) . '"></a></span>';
+                ?>
+                <div class="next-thumbnail" style="display: none;">
+                    <img src="" alt="" width="75" height="75"/>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="photo_apres">
-        <?php
-        $next_post = get_next_post();
-        if (!empty($next_post)) {
-            $next_image = get_the_post_thumbnail_url($next_post->ID);
-            echo '<span class="right"><a href="' . get_permalink($next_post) . '" rel="next"><img src="' . get_stylesheet_directory_uri() . '/images/fleche-droite.png" class="nav-arrow" data-image="' . $next_image . '" data-title="' . esc_attr($next_post->post_title) . '"></a></span>';
-        }
-        ?>
-        <div class="next-thumbnail" style="display: none;">
-            <img src="" alt="" width="75" height="75"/>
-        </div>
-    </div>
-    </div>
-
-
-    </div>
-
 </section>
 
 <!-- AFFICHAGE DE DEUX PHOTOS DE LA MEME CATEGORIES -->
@@ -135,7 +140,6 @@ get_header();
         ?>
     </div>
 
-
     <div class="btn-all-photos">
         <button id="all-photos" type="button">
             <a href="http://localhost/mota/" aria-label="Page d'accueil de Nathalie Mota">Toutes les photos</a>
@@ -144,7 +148,5 @@ get_header();
 </section>
 
 <?php get_footer(); ?>
-
 </div>
 <?php get_footer(); ?>
-

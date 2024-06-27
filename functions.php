@@ -64,6 +64,7 @@ function create_photo_post_type() {
     );
 }
 add_action('init', 'create_photo_post_type');
+
 // Ajouter une règle de réécriture personnalisée pour inclure la référence dans les permaliens
 function add_custom_rewrite_rules() {
     add_rewrite_rule(
@@ -106,6 +107,7 @@ function custom_photo_permalink($permalink, $post) {
     return $permalink;
 }
 add_filter('post_type_link', 'custom_photo_permalink', 10, 2);
+
 
 // Crée les taxonomies 'categories-photos' et 'formats'
 function create_photo_taxonomies() {
@@ -191,7 +193,7 @@ function load_more_photos() {
         'paged' => $paged,
     );
 
-    $photos_query = new WP_Query($args);
+    $photos_query = new WP_QUERY($args);
 
     if ($photos_query->have_posts()) :
         while ($photos_query->have_posts()) : $photos_query->the_post();
