@@ -34,9 +34,6 @@
         <?php include_once 'template-parts/contact.php'; ?>
     </header>
     <div id="modal__content" class="modal__content">
-        <div id="close__modal" class="btn-close">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/close-lightbox.png" alt="Close">
-        </div>
         <?php
         wp_nav_menu(array(
             'theme_location' => 'main-menu',

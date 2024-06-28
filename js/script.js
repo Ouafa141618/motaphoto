@@ -204,3 +204,18 @@ jQuery(document).ready(function($) {
         $(this).find('.next-thumbnail').hide();
     });
 });
+jQuery(document).ready(function($) {
+    // Gestion du menu burger en responsive
+    $('#modal__burger').on('click', function() {
+        $(this).toggleClass('close');
+        $('#modal__content').toggleClass('animate-modal');
+    });
+
+    // Fermer le menu burger en cliquant en dehors du menu
+    $(window).on('click', function(event) {
+        if ($(event.target).is('#modal__content')) {
+            $('#modal__burger').removeClass('close');
+            $('#modal__content').removeClass('animate-modal');
+        }
+    });
+});

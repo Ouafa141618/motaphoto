@@ -139,12 +139,6 @@ get_header();
         }
         ?>
     </div>
-
-    <div class="btn-all-photos">
-        <button id="all-photos" type="button">
-            <a href="http://localhost/mota/" aria-label="Page d'accueil de Nathalie Mota">Toutes les photos</a>
-        </button>
-    </div>
 </section>
 
 <?php get_footer(); ?>

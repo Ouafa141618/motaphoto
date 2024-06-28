@@ -148,19 +148,18 @@ button {
 
 /************************************** MENU HAMBURGER MOBILE *********************************************************************/
 
-
+/* Par défaut, cachez le menu burger */
 .btn-modal {
-    display: none; /* Masqué par défaut */
+    display: none;
 }
 
+/* Style du menu burger en version mobile */
 @media (max-width: 768px) {
     .btn-modal {
         display: flex;
         opacity: 1;
         position: absolute;
         flex-direction: column;
-        align-content: center;
-        margin-top: 70px;
         justify-content: center;
         background-color: transparent;
         gap: 8px;
@@ -174,7 +173,6 @@ button {
     .btn-modal .line {
         height: 1.7px;
         background-color: #000;
-        display: block;
         width: 100%;
         margin: 0;
         transition: all .3s ease-in-out;
@@ -192,10 +190,12 @@ button {
         transform: rotate(-45deg) translate3d(8px, -6px, 0);
     }
 
+    /* Masque le menu principal en version mobile */
     #nav {
-        display: none; /* Masque le menu principal */
+        display: none;
     }
 
+    /* Style de la modale du menu burger */
     .modal__content {
         position: fixed;
         left: 0;
@@ -238,37 +238,13 @@ button {
         font-size: 23px;
         text-decoration: none;
     }
+
+    .menu-header-menu-container a:hover {
+        color: #ccc;
+    }
 }
 
-.btn-modal .line {
-    opacity: 1;
-    height: 1.7px;
-    background-color: #000;
-    display: block;
-    width: 100%;
-    margin: 0;
-    transition: all .3s ease-in-out;
-}
-
-.btn-modal.close {
-    z-index: 2000;
-    top: 1em;
-    right: 1em;
-}
-
-#modal__burger:hover .line:nth-child(2),
-.btn-modal.close .line:nth-child(2) {
-    opacity: 0;
-}
-
-.btn-modal.close .line:first-child {
-    transform: rotate(45deg) translate3d(8px, 6px, 0);
-}
-
-.btn-modal.close .line:last-child {
-    transform: rotate(-45deg) translate3d(8px, -6px, 0);
-}
-
+/* Styles supplémentaires pour la modale */
 .modal__content {
     position: fixed;
     left: 0;
@@ -329,6 +305,7 @@ button {
         visibility: visible;
     }
 }
+
 
 /*---------------------------------------------------- FOOTER ------------------------------------------------------------------------*/
 
