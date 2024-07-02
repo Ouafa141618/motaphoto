@@ -164,6 +164,7 @@ button {
         background-color: transparent;
         gap: 8px;
         top: 1em;
+        margin-top: 20px;
         right: 1em;
         width: 28px;
         cursor: pointer;
@@ -802,10 +803,6 @@ button {
     color: black; /* Couleur du texte par défaut */
 }
 
-.filters .filter select:hover {
-    background-color: #E00000; /* Couleur de fond rouge */
-    color: white; /* Couleur du texte en blanc pour le contraste */
-}
 
 /************************ HERO BANNER (banner.php) *****************************/
 
@@ -1108,9 +1105,11 @@ button {
 
     /* FOOTER */
     .footer {
-        width: 768px;
-        padding-top: 50px;
+        width: 100%;
+        padding-top: 100px;
         padding-bottom: 50px;
+        gap: 20px;
+        flex-direction: column;
     }
 
     .footer-nav {
