@@ -1,9 +1,9 @@
+
 <div class="filters-container">
     <div class="filters">
         <div class="filter">
-            <label for="filter-category" class="filter-label">CATEGORIE</label>
             <select name="categories-photos" id="filter-category" class="filter-category">
-                <option value="default-category"></option>
+                <option value="" disabled selected hidden>Catégories</option>
                 <?php
                 $categories = get_categories(array(
                     'taxonomy' => 'categories-photos',
@@ -17,9 +17,8 @@
         </div>
 
         <div class="filter">
-            <label for="filter-format" class="filter-label">FORMAT</label>
             <select name="formats" id="filter-format" class="filter-format">
-                <option value="default-format"></option>
+                <option value="" disabled selected hidden>Formats</option>
                 <?php
                 $formats = get_categories(array(
                     'taxonomy' => 'formats',
@@ -33,9 +32,8 @@
         </div>
 
         <div class="filter">
-            <label for="filter-tri" class="filter-label">TRIER PAR</label>
             <select name="tri" id="filter-tri" class="filter-tri">
-                <option value="default-tri"></option>
+                <option value="" disabled selected hidden>Trier par</option>
                 <option value="date_desc">Du plus récent au plus ancien</option>
                 <option value="date_asc">Du plus ancien au plus récent</option>
             </select>
